@@ -20,40 +20,40 @@ block content
                   i  we have to spend valuable meeting time wandering about Ford looking for a free table.
 
             //-  THIS WILL HAVE TO BE SOMETHING REAL
-            form(action='../index.pug')
-            div.center
-                  p
-                        i To promote...
-                  input(type='text' id="r1" name='goal' placeholder='goal')
-            br
-            br
+            form(method='POST', action='/newcard')
+                  div.center
+                        p
+                              i To promote...
+                        input(type='text' id="r1" name='goal' placeholder='goal')
+                  br
+                  br
 
-            div.center
-                  p
-                        i I need...
-                  input(type='text' id="r1" name='need' placeholder='need')
-            br
-            br
+                  div.center
+                        p
+                              i I need...
+                        input(type='text' id="r1" name='need' placeholder='need')
+                  br
+                  br
 
-            div.center
-                  p
-                        i However, currently what's happening is...
-                  input(type='text' id="r1" name='current' placeholder='current solution')
-            br
-            br
+                  div.center
+                        p
+                              i However, currently what's happening is...
+                        input(type='text' id="r1" name='current' placeholder='current solution')
+                  br
+                  br
 
-            div.center
-                  p
-                        i So...
-                  input(type='text' id="r1" name='problem' placeholder='problem')
+                  div.center
+                        p
+                              i So...
+                        input(type='text' id="r1" name='problem' placeholder='problem')
 
-            br
-            br
-            div.center
-                  p Extra comments?
-                  textarea(id="comment" rows="4" cols="40" name="comment" form="usrform", placeholder='comments?')
-            br
-            div.center
-                  input(type='submit' value='Submit')
+                  br
+                  br
+                  div.center
+                        p Extra comments?
+                        textarea(id="comment" rows="4" cols="40" name="comment" form="usrform", placeholder='comments?')
+                  br
+                  div.center
+                        input(type='submit' value='Submit')
 
             //- p #{info}
