@@ -1,0 +1,38 @@
+extends includes/layout
+
+block content
+    main.container-fluid(role='main')
+        .jumbotron
+            h2.text-center New Card Page
+            h6.text-center Fill in the card below with details about your problem statement.
+            hr
+
+            //-  THIS WILL HAVE TO BE SOMETHING REAL
+            form(action='../index.pug')
+            | To promote...
+            br
+            input(type='text' name='goal' value='goal')
+            br
+            br
+
+            |   I need...
+            br
+            input(type='text' name='need' value='need')
+            br
+            br
+
+            |   However, currently what's happening is...
+            br
+            input(type='text' name='current' value='current solution')
+            br
+            br
+            |   So...
+            br
+
+            input(type='text' name='problem' value='problem')
+
+            br
+            br
+            input(type='submit' value='Submit')
+
+            //- p #{info}
