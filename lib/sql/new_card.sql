@@ -3,6 +3,7 @@ INSERT INTO {SCHEMA}.cards(
     need,
     current_solution,
     problem,
+    comment,
     email
 )
 VALUES (
@@ -10,5 +11,6 @@ VALUES (
     $2,
     $3,
     $4,
-    $5
+    $5,
+    $6
 )

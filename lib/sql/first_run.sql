@@ -13,5 +13,6 @@ CREATE TABLE {SCHEMA}.cards(
     need VARCHAR,
     current_solution VARCHAR,
     problem VARCHAR,
+    comment VARCHAR,
     email VARCHAR
 );
