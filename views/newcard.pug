@@ -3,36 +3,57 @@ extends includes/layout
 block content
     main.container-fluid(role='main')
         .jumbotron
-            h2.text-center New Card Page
+            h2.text-center Create a new card!
             h6.text-center Fill in the card below with details about your problem statement.
             hr
 
+            p
+                  b Example problem statement:
+                  i To
+                  b  promote
+                  i  research productivity, I
+                  b  need
+                  i  a place to meet with collaborators. However,
+                  b  currently
+                  i  the Main Lab is supposed to be used for quiet work and the Hackerspace is often booked for studies,
+                  b  so
+                  i  we have to spend valuable meeting time wandering about Ford looking for a free table.
+
             //-  THIS WILL HAVE TO BE SOMETHING REAL
             form(action='../index.pug')
-            | To promote...
-            br
-            input(type='text' name='goal' placeholder='goal')
-            br
-            br
-
-            |   I need...
-            br
-            input(type='text' name='need' placeholder='need')
+            div.center
+                  p
+                        i To promote...
+                  input(type='text' id="r1" name='goal' placeholder='goal')
             br
             br
 
-            |   However, currently what's happening is...
+            div.center
+                  p
+                        i I need...
+                  input(type='text' id="r1" name='need' placeholder='need')
             br
-            input(type='text' name='current' placeholder='current solution')
-            br
-            br
-            |   So...
             br
 
-            input(type='text' name='problem' placeholder='problem')
+            div.center
+                  p
+                        i However, currently what's happening is...
+                  input(type='text' id="r1" name='current' placeholder='current solution')
+            br
+            br
+
+            div.center
+                  p
+                        i So...
+                  input(type='text' id="r1" name='problem' placeholder='problem')
 
             br
             br
-            input(type='submit' value='Submit')
+            div.center
+                  p Extra comments?
+                  textarea(id="comment" rows="4" cols="40" name="comment" form="usrform", placeholder='comments?')
+            br
+            div.center
+                  input(type='submit' value='Submit')
 
             //- p #{info}

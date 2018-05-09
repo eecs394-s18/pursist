@@ -6,3 +6,27 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+p{
+	font-size: 15px;
+	color: #09172d;
+}
+
+#r1{
+	text-align: center;
+	border-radius: 10px;
+    border: 2px solid #5277b2;
+    padding: 20px;
+    width: 200px;
+    height: 10px;
+}
+
+#comment{
+  text-align:center;
+  border: 2px solid #5277b2;
+}
+
+div.center{
+	text-align: center;
+}
