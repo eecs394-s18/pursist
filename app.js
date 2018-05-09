@@ -6,15 +6,34 @@ var logger = require('morgan');
 
 var app = express();
 
-// View Engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-// Logging and Express Setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // HTML and Pug files have access to this folder
+require('dotenv').load();
+
+var currentENV = process.env.NODE_ENV;
+
+/*
+    Postgres set-up and connection:
+*/
+
+var queries = require(path.join(__dirname + '/lib/queries'));
+// Set up database if not done yet
+queries.dbExists((exists) => {
+    if (!(exists))
+    {
+        console.log("[Alert] First run; setting up tables in database.")
+        queries.setup(path.join(__dirname + "/lib/sql/first_run.sql"));
+    }
+    else
+    {
+        console.log("[Alert] Connected to " + currentENV + " database.");
+    }
+});
 
 /*
     Routers
