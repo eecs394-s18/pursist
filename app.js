@@ -21,9 +21,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 */
 var indexRouter = require('./routes/index');
 var organizerRouter = require('./routes/organizer');
+var newCardRouter = require('./routes/newcard')
 
 app.use('/', indexRouter);
 app.use('/organizer', organizerRouter);
+app.use('/newcard', newCardRouter)
 
 /*
     Error Handling
