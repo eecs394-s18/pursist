@@ -2,10 +2,12 @@ extends includes/layout
 
 block content
     h2.text-center Your cards:
-    hr   
+    hr
     .row.text-center.work-pad
-        if data != null
-            each card in data    
+        if isEmpty
+            h3 There are no cards in the database yet.
+        else
+            each card in data
                 .col-md-3
                     p Goal: #{card.goal}
                     p Need: #{card.need}
@@ -13,5 +15,3 @@ block content
                     p Problem: #{card.problem}
                     p Comments: #{card.comment}
                     p Created By: #{card.email}
-        else
-            h3 There are no cards in the database yet.

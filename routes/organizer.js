@@ -10,11 +10,11 @@ router.get('/', function(req, res, next) {
     {
         if (tableData.length > 0)
         {
-            res.render('organizer', {title: 'Organizer', data: tableData});
+            res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false});
         }
         else
         {
-            res.render('organizer', {title: 'Organizer', data: null});
+            res.render('organizer', {title: 'Organizer', data: null, isEmpty: true});
         }
     });
 });
