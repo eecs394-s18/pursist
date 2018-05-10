@@ -1,0 +1,54 @@
+extends includes/layout
+
+block content
+    link(rel='stylesheet', href='/styles/signin.css')
+
+    body.text-center
+        main.container-fluid(role='main')
+            form.form-signin(method='POST', action='/newuser')
+                h1.h3.mb-3.font-weight-normal Create an account
+
+                #alert.alert-danger
+                    p#failMsg
+
+                label.sr-only(for='inputEmail') Email address
+                input#inputEmail.form-control(type='email', placeholder='email address', required='', autofocus='', name='email')
+                
+                label.sr-only(for='inputPassword') Password
+                input#inputPassword.form-control(type='password', placeholder='password (at least 6 characters)', required='', name='password')
+
+                label.sr-only(for='inputPassword') Confirm Password
+                input#inputPassword.form-control(type='password', placeholder='confirm password', required='', name='passconf')
+
+                button.btn.btn-lg.btn-primary.btn-block(type='submit') Create account
+
+    script.
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        var failed = false;
+        var failedMessage = ""
+        for (var i = 0; i < vars.length; i++) 
+        {
+            var pair = vars[i].split("=");
+            if (pair[0] == 'passwordMismatch') 
+            {
+                failed = true;
+                failedMessage = "Passwords do not match; please retry!"
+            }
+            else if (pair[0] == 'usernameUsed')
+            {
+                failed = true;
+                failedMessage = "This email address is already in use; please use a different one or sign in!"
+            }
+            else if (pair[0] == 'shortPassword')
+            {
+                failed = true;
+                failedMessage = "Your password must be at least 6 characters long; please retry!";
+            }
+            else if (pair[0] == 'generalError')
+            {
+                failed = true;
+                failedMessage = "An error has occurred; please retry. If this issue persists, please contact the page administrator.";
+            }
+        }
+        document.getElementById("failMsg").innerHTML = failedMessage;
