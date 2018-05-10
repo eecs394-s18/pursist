@@ -51,7 +51,14 @@ block content
                   br
                   div.center
                         p Extra comments?
-                        textarea(id="comment" rows="4" cols="40" name="comment" form="usrform", placeholder='comments?')
+                        textarea(type="comment" rows="4" cols="40" name="comment", placeholder='comments?')
+
+                  br
+                  br
+                  div.center
+                        p Contact email:
+                        input(type='email' id='r1' name='email' placeholder='email address')
+
                   br
                   div.center
                         input(type='submit' value='Submit')
