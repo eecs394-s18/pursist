@@ -10,9 +10,21 @@ block content
             each card in data
                 .col-md-3
                     div.cardborder
-                        p Goal: #{card.goal}
-                        p Need: #{card.need}
-                        p Current Solution: #{card.current_solution}
-                        p Problem: #{card.problem}
-                        p Comments: #{card.comment}
-                        p Created By: #{card.email}
+                        p
+                            b Goal:
+                            |  #{card.goal}
+                        p
+                            b Need:
+                            |  #{card.need}
+                        p
+                            b Current Solution:
+                            |  #{card.current_solution}
+                        p
+                            b Problem:
+                            |  #{card.problem}
+                        p
+                            b Comments:
+                            |  #{card.comment}
+                        p
+                            b Created By:
+                            |  #{card.email}
