@@ -2,10 +2,8 @@ DROP SCHEMA IF EXISTS {SCHEMA} CASCADE;
 CREATE SCHEMA {SCHEMA};
 
 CREATE TABLE {SCHEMA}.users(
-    fullname VARCHAR,
     email VARCHAR,
-    password VARCHAR,
-    CONSTRAINT uniq_email UNIQUE (email)
+    password VARCHAR
 );
 
 CREATE TABLE {SCHEMA}.cards(
