@@ -1,11 +1,17 @@
 extends includes/layout
 
 block content
-    main.container-fluid(role='main')
-        .jumbotron
-            h2.text-center Organizer Page
-            hr
-
-            p There will be some things that the organizer can do here...
-
-            p #{info}
+    h2.text-center Your cards:
+    hr   
+    .row.text-center.work-pad
+        if data != null
+            each card in data    
+                .col-md-3
+                    p Goal: #{card.goal}
+                    p Need: #{card.need}
+                    p Current Solution: #{card.current_solution}
+                    p Problem: #{card.problem}
+                    p Comments: #{card.comment}
+                    p Created By: #{card.email}
+        else
+            h3 There are no cards in the database yet.
