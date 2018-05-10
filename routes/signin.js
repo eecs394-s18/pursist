@@ -9,8 +9,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-    console.log(req.body);
-    res.redirect('/');
+    email = req.body.email;
+    password = req.body.password;
+
+    queries.validateLogin(email, password, (response) => 
+    {
+        if (response == undefined || response.length == 0) 
+        {
+            // set up a valid user session
+            res.redirect('/organizer');
+        }
+        else
+        {
+            res.redirect('/signin?loginFailed=true');
+        }
+    });
 });
 
 module.exports = router;
