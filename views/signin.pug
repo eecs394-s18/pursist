@@ -1,0 +1,42 @@
+extends includes/layout
+
+block content
+    link(rel='stylesheet', href='/styles/signin.css')
+
+    body.text-center
+        main.container-fluid(role='main')
+            form.form-signin(method='POST', action='/signin')
+                i.feather-nav(data-feather='user')
+                h1.h3.mb-3.font-weight-normal Please sign in
+
+                #alert.alert-danger
+                    p#failMsg
+
+                label.sr-only(for='inputEmail') Email address
+                input#inputEmail.form-control(type='email', placeholder='email address', required='', autofocus='', name='email')
+
+                label.sr-only(for='inputPassword') Password
+                input#inputPassword.form-control(type='password', placeholder='password', required='', name='password')
+
+                button.btn.btn-lg.btn-primary.btn-block(type='submit') Sign in
+
+            hr
+            h1.h3.mb-3.font-weight-normal No account? #[a(href='/newuser') Sign up here.]
+
+    script.
+        feather.replace()
+
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        var failed = false;
+        var failedMessage = ""
+        for (var i = 0; i < vars.length; i++) 
+        {
+            var pair = vars[i].split("=");
+            if (pair[0] == 'loginFailed') 
+            {
+                failed = true;
+                failedMessage = "Login failed; please try again."
+            }
+        }
+        document.getElementById("failMsg").innerHTML = failedMessage;

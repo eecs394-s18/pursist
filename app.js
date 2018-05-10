@@ -40,11 +40,15 @@ queries.dbExists((exists) => {
 */
 var indexRouter = require('./routes/index');
 var organizerRouter = require('./routes/organizer');
-var newCardRouter = require('./routes/newcard')
+var newCardRouter = require('./routes/newcard');
+var signinRouter = require('./routes/signin');
+var newuserRouter = require('./routes/newuser');
 
 app.use('/', indexRouter);
 app.use('/organizer', organizerRouter);
-app.use('/newcard', newCardRouter)
+app.use('/newcard', newCardRouter);
+app.use('/signin', signinRouter);
+app.use('/newuser', newuserRouter);
 
 /*
     Error Handling
