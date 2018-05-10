@@ -30,3 +30,10 @@ p{
 div.center{
 	text-align: center;
 }
+
+div.cardborder{
+  border-radius: 10px;
+    border: 2px solid #5277b2;
+    padding: 20px;
+    box-shadow: 4px 9px #5277b2;
+}

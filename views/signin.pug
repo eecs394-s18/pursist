@@ -30,10 +30,10 @@ block content
         var vars = query.split("&");
         var failed = false;
         var failedMessage = ""
-        for (var i = 0; i < vars.length; i++) 
+        for (var i = 0; i < vars.length; i++)
         {
             var pair = vars[i].split("=");
-            if (pair[0] == 'loginFailed') 
+            if (pair[0] == 'loginFailed')
             {
                 failed = true;
                 failedMessage = "Login failed; please try again."

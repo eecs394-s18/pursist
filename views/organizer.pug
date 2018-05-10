@@ -9,9 +9,10 @@ block content
         else
             each card in data
                 .col-md-3
-                    p Goal: #{card.goal}
-                    p Need: #{card.need}
-                    p Current Solution: #{card.current_solution}
-                    p Problem: #{card.problem}
-                    p Comments: #{card.comment}
-                    p Created By: #{card.email}
+                    div.cardborder
+                        p Goal: #{card.goal}
+                        p Need: #{card.need}
+                        p Current Solution: #{card.current_solution}
+                        p Problem: #{card.problem}
+                        p Comments: #{card.comment}
+                        p Created By: #{card.email}
