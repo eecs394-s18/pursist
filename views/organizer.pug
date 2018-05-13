@@ -28,3 +28,20 @@ block content
                         p
                             b Created By:
                             |  #{card.email}
+
+    br
+    //- div.center
+    //-     script.
+    //-          var json2csv = require('json2csv');
+    //-          var express = require('express');
+    //-          var fs = require('fs');
+    //-          var exportCSV;
+    //-          exportCSV = function() {
+    //-             console.log("exportCSV called");
+    //-             var csv = json2csv({ data: tableData, fields: myfields });
+    //-             fs.writeFile('/Users/juliawilkins/Desktop/output.csv', csv, function(err) {
+    //-             if (err) throw err;
+    //-             console.log('file saved');
+    //-             });
+    //-             };
+    //-     button(onclick="exportCSV()") export
