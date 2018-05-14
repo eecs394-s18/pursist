@@ -43,12 +43,20 @@ var organizerRouter = require('./routes/organizer');
 var newCardRouter = require('./routes/newcard');
 var signinRouter = require('./routes/signin');
 var newuserRouter = require('./routes/newuser');
+var diagramsRouter = require('./routes/diagrams');
 
 app.use('/', indexRouter);
 app.use('/organizer', organizerRouter);
 app.use('/newcard', newCardRouter);
 app.use('/signin', signinRouter);
 app.use('/newuser', newuserRouter);
+app.use('/diagrams', diagramsRouter);
+
+app._router.stack.forEach(function(r){
+  if (r.route && r.route.path){
+    console.log(r.route.path)
+  }
+})
 
 /*
     Error Handling
