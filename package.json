@@ -15,6 +15,7 @@
     "express-session": "^1.15.6",
     "http-errors": "~1.6.2",
     "json2csv": "^4.1.2",
+    "lodash": "^4.17.5",
     "moment": "^2.22.1",
     "morgan": "~1.9.0",
     "pg-promise": "^8.4.4",
