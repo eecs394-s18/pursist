@@ -15,6 +15,17 @@ npm start
 
 Direct your browser to localhost:3000 to use the app.
 
+## Pushing to the live app
+1) Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+
+2) Go into app directory
+
+3) ```heroku login```
+
+4) ```heroku git:remote -a pursist```
+
+5) To deploy master branch, run ```git push heroku master```
+
 ## Resources
 - [Express routing guide](https://expressjs.com/en/guide/routing.html)
 - [Pug quick start](https://pugjs.org/api/getting-started.html)
