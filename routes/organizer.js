@@ -27,7 +27,6 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
     queries.fetchTable((tableData) =>
     {
-        console.log(tableData);
         if (tableData.length > 0)
         {
             try {
