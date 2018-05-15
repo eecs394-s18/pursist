@@ -12,6 +12,7 @@ const fields = ['goal', 'need', 'current_solution', 'problem', 'comment', 'email
 router.get('/', function(req, res, next) {
     queries.fetchTable((tableData) =>
     {
+      console.log("printing tableData " + tableData);
         if (tableData.length > 0)
         {
             res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false});
