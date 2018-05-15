@@ -28,4 +28,8 @@ block content
                         p
                             b Created By:
                             |  #{card.email}
-    script.
+
+            .container
+                br
+                form.text-center(action='', method='post' style="margin-top: 20px")
+                    input(type='submit', name='export', value='export to csv')
