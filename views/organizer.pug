@@ -6,15 +6,15 @@ block content
     //- .row.text-center.work-pad
     //- right has cards that need to be assigned, left has cards already assigned
     .row.text-center.work-pad
-        .column
+        .column_big_bar
             if isEmpty
                 h3 There are no cards in the database yet.
             else
                 h1 Cards to tag:
                 each card in data
                     if !card.goal_tag && !card.need_tag && !card.challenge_tag
-                        .column
-                            div.cardborder
+                        .column_inner
+                            div.cardborder_untagged
                                 p
                                     b Goal:
                                     |  #{card.goal}
@@ -65,15 +65,15 @@ block content
                                     input(type='submit', name=card.email, value='submit')
 
         // already tagged cards
-        .column
+        .column_big_nobar
             if isEmpty
                 h3 There are no cards in the database yet.
             else
                 h1 Already tagged cards:
                 each card in data
                     if card.goal_tag && card.need_tag && card.challenge_tag
-                        .column
-                            div.cardborder
+                        .column_inner
+                            div.cardborder_tagged
                                 p
                                     b Goal:
                                     |  #{card.goal}
@@ -103,46 +103,6 @@ block content
                                     b Challenge Tag:
                                     |  #{card.challenge_tag}
 
-
-                                //-  This is where we have the dropdowns for organizers to tag with.
-                                // Right now the dropdowns are hardcoded - they would probably eventually need to be more dynamic or stored in lists in the databases
-
-                                //- form(method='POST', action='/organizer')
-                                //-     p Select a goal tag:
-                                //-     select(name='goal_tag')
-                                //-         option(value='research') Research
-                                //-         option(value='community') Community
-
-                                //-     br
-                                //-     br
-                                //-     br
-
-                                //-     p Select a need tag:
-                                //-     select(name='need_tag')
-                                //-         option(value='individual_workspace') Individual Workspace
-                                //-         option(value='collaborative_workspace') Collaborative Workspace
-                                //-         option(value='feel_welcome') Feel Welcome
-                                //-     br
-                                //-     br
-                                //-     br
-
-                                //-     //- ONCHANGE submit - trying to submit 3 inputs from one form here for one overall call to update_card - right now it's stalling weirdly
-                                //-     p Select a challenge tag:
-                                //-     select(name='challenge_tag' onchange="this.form.submit()")
-                                //-         option(value='squatters') Squatters
-                                //-         option(value='space_problems') Space Problems
-
-                                //-     input(type='submit', name=card.email, value='submit')
-
-
-            //- .container
-            //-     br
-
-                //- EXPORT CSV BUTTON SHIT
-                //- form.text-center(action='', method='post' style="margin-top: 20px")
-
-                    //- button(type='submit' name='export' value='export to csv') Export to CSV
-                    //- input(type='submit', name='export', value='export to csv')
 
 
 
