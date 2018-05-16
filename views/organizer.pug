@@ -3,66 +3,140 @@ extends includes/layout
 block content
     h2.text-center Your cards:
     hr
+    //- .row.text-center.work-pad
+    //- right has cards that need to be assigned, left has cards already assigned
     .row.text-center.work-pad
-        if isEmpty
-            h3 There are no cards in the database yet.
-        else
-            each card in data
-                .col-md-3
-                    div.cardborder
-                        p
-                            b Goal:
-                            |  #{card.goal}
-                        p
-                            b Need:
-                            |  #{card.need}
-                        p
-                            b Current Solution:
-                            |  #{card.current_solution}
-                        p
-                            b Problem:
-                            |  #{card.problem}
-                        p
-                            b Comments:
-                            |  #{card.comment}
-                        p
-                            b Created By:
-                            |  #{card.email}
+        .column
+            if isEmpty
+                h3 There are no cards in the database yet.
+            else
+                h1 Cards to tag:
+                each card in data
+                    if !card.goal_tag && !card.need_tag && !card.challenge_tag
+                        .column
+                            div.cardborder
+                                p
+                                    b Goal:
+                                    |  #{card.goal}
+                                p
+                                    b Need:
+                                    |  #{card.need}
+                                p
+                                    b Current Solution:
+                                    |  #{card.current_solution}
+                                p
+                                    b Problem:
+                                    |  #{card.problem}
+                                p
+                                    b Comments:
+                                    |  #{card.comment}
+                                p
+                                    b Created By:
+                                    |  #{card.email}
 
-                        //-  This is where we have the dropdowns for organizers to tag with.
-                        // Right now the dropdowns are hardcoded - they would probably eventually need to be more dynamic or stored in lists in the databases
+                                //-  This is where we have the dropdowns for organizers to tag with.
+                                // Right now the dropdowns are hardcoded - they would probably eventually need to be more dynamic or stored in lists in the databases
 
-                        form(method='POST', action='/organizer')
-                            p Select a goal tag:
-                            select(name='goal_tag' onchange="this.form.submit()")
-                                option(value='research') Research
-                                option(value='community') Community
+                                form(method='POST', action='/organizer')
+                                    p Select a goal tag:
+                                    select(name='goal_tag')
+                                        option(value='research') Research
+                                        option(value='community') Community
 
-                            br
-                            br
-                            br
+                                    br
+                                    br
+                                    br
 
-                            p Select a need tag:
-                            select(name='need_tag')
-                                option(value='individual_workspace') Individual Workspace
-                                option(value='collaborative_workspace') Collaborative Workspace
-                                option(value='feel_welcome') Feel Welcome
-                            br
-                            br
-                            br
+                                    p Select a need tag:
+                                    select(name='need_tag')
+                                        option(value='individual_workspace') Individual Workspace
+                                        option(value='collaborative_workspace') Collaborative Workspace
+                                        option(value='feel_welcome') Feel Welcome
+                                    br
+                                    br
+                                    br
 
-                            //- ONCHANGE submit - trying to submit 3 inputs from one form here for one overall call to update_card - right now it's stalling weirdly
-                            p Select a challenge tag:
-                            select(name='challenge_tag' onchange="this.form.submit()")
-                                option(value='squatters') Squatters
-                                option(value='space_problems') Space Problems
+                                    //- ONCHANGE submit - trying to submit 3 inputs from one form here for one overall call to update_card - right now it's stalling weirdly
+                                    p Select a challenge tag:
+                                    select(name='challenge_tag' onchange="this.form.submit()")
+                                        option(value='squatters') Squatters
+                                        option(value='space_problems') Space Problems
 
-                            input(type='submit', name=card.email, value='submit')
+                                    input(type='submit', name=card.email, value='submit')
+
+        // already tagged cards
+        .column
+            if isEmpty
+                h3 There are no cards in the database yet.
+            else
+                h1 Already tagged cards:
+                each card in data
+                    if card.goal_tag && card.need_tag && card.challenge_tag
+                        .column
+                            div.cardborder
+                                p
+                                    b Goal:
+                                    |  #{card.goal}
+                                p
+                                    b Need:
+                                    |  #{card.need}
+                                p
+                                    b Current Solution:
+                                    |  #{card.current_solution}
+                                p
+                                    b Problem:
+                                    |  #{card.problem}
+                                p
+                                    b Comments:
+                                    |  #{card.comment}
+                                p
+                                    b Created By:
+                                    |  #{card.email}
+
+                                p
+                                    b Goal Tag:
+                                    |  #{card.goal_tag}
+                                p
+                                    b Need Tag:
+                                    |  #{card.need_tag}
+                                p
+                                    b Challenge Tag:
+                                    |  #{card.challenge_tag}
 
 
+                                //-  This is where we have the dropdowns for organizers to tag with.
+                                // Right now the dropdowns are hardcoded - they would probably eventually need to be more dynamic or stored in lists in the databases
 
-            .container
-                br
+                                //- form(method='POST', action='/organizer')
+                                //-     p Select a goal tag:
+                                //-     select(name='goal_tag')
+                                //-         option(value='research') Research
+                                //-         option(value='community') Community
+
+                                //-     br
+                                //-     br
+                                //-     br
+
+                                //-     p Select a need tag:
+                                //-     select(name='need_tag')
+                                //-         option(value='individual_workspace') Individual Workspace
+                                //-         option(value='collaborative_workspace') Collaborative Workspace
+                                //-         option(value='feel_welcome') Feel Welcome
+                                //-     br
+                                //-     br
+                                //-     br
+
+                                //-     //- ONCHANGE submit - trying to submit 3 inputs from one form here for one overall call to update_card - right now it's stalling weirdly
+                                //-     p Select a challenge tag:
+                                //-     select(name='challenge_tag' onchange="this.form.submit()")
+                                //-         option(value='squatters') Squatters
+                                //-         option(value='space_problems') Space Problems
+
+                                //-     input(type='submit', name=card.email, value='submit')
+
+
+            //- .container
+            //-     br
 
                 //- EXPORT CSV BUTTON SHIT
                 //- form.text-center(action='', method='post' style="margin-top: 20px")

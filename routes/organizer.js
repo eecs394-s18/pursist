@@ -26,19 +26,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
         console.log(req.body);
-        // here is where we're going to call the updatecard function
-        // cardData = {
-        //     goal: req.body.goal,
-        //     need: req.body.need,
-        //     current: req.body.current,
-        //     problem: req.body.problem,
-        //     comment: req.body.comment,
-        //     email: req.body.email,
-        //     // initialize these to null here - students don't sset them yet
-        //     goal_tag: req.body.goal_tag,
-        //     need_tag: req.body.need_tag,
-        //     challenge_tag: req.body.challenge_tag
-        // };
 
         queries.updateCard([req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
             if (!response){
