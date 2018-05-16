@@ -6,7 +6,9 @@ CREATE TABLE {SCHEMA}.users(
     password VARCHAR
 );
 
+
 CREATE TABLE {SCHEMA}.cards(
+    id SERIAL,
     goal VARCHAR,
     need VARCHAR,
     current_solution VARCHAR,

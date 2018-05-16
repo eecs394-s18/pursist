@@ -59,7 +59,6 @@ div.cardborder_untagged{
 
 
 /* Create two equal columns that floats next to each other */
-/*hacky adding border to one side lol*/
 .column_big_bar {
     float: left;
     width: 50%;
@@ -71,7 +70,7 @@ div.cardborder_untagged{
   float: left;
   width: 50%;
   padding: 10px;
-    /*border-left: 1px;*/
+
 
 }
 
@@ -84,7 +83,11 @@ div.cardborder_untagged{
 
 /* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-    .column {
+    .column_big_nobar {
         width: 100%;
+    }
+
+    .column_big_bar{
+      width: 100%;
     }
 }

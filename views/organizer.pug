@@ -34,11 +34,9 @@ block content
                                     b Created By:
                                     |  #{card.email}
 
-                                //-  This is where we have the dropdowns for organizers to tag with.
-                                // Right now the dropdowns are hardcoded - they would probably eventually need to be more dynamic or stored in lists in the databases
-
                                 form(method='POST', action='/organizer')
-                                    p Select a goal tag:
+                                    p
+                                        b Select a goal tag:
                                     select(name='goal_tag')
                                         option(value='research') Research
                                         option(value='community') Community
@@ -47,7 +45,8 @@ block content
                                     br
                                     br
 
-                                    p Select a need tag:
+                                    p
+                                        b Select a need tag:
                                     select(name='need_tag')
                                         option(value='individual_workspace') Individual Workspace
                                         option(value='collaborative_workspace') Collaborative Workspace
@@ -56,12 +55,13 @@ block content
                                     br
                                     br
 
-                                    //- ONCHANGE submit - trying to submit 3 inputs from one form here for one overall call to update_card - right now it's stalling weirdly
-                                    p Select a challenge tag:
-                                    select(name='challenge_tag' onchange="this.form.submit()")
+                                    p
+                                        b Select a challenge tag:
+                                    select(name='challenge_tag')
                                         option(value='squatters') Squatters
                                         option(value='space_problems') Space Problems
 
+                                    //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
                                     input(type='submit', name=card.email, value='submit')
 
         // already tagged cards
