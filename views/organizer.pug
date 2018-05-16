@@ -33,31 +33,33 @@ block content
                         // Right now the dropdowns are hardcoded - they would probably eventually need to be more dynamic or stored in lists in the databases
 
                         form(method='POST', action='/organizer')
-                            p
-                                b
-                                    p Select a goal tag:
-                                    select(name='goal_tag' onchange="this.form.submit()")
-                                        option(value='research') Research
-                                        option(value='community') Community
+                            p Select a goal tag:
+                            select(name='goal_tag' onchange="this.form.submit()")
+                                option(value='research') Research
+                                option(value='community') Community
 
-                                    br
-                                    br
-                                    br
+                            br
+                            br
+                            br
 
-                                    //- p Select a need tag:
-                                    //- select(name='need_tag')
-                                    //-     option(value='individual_workspace') Individual Workspace
-                                    //-     option(value='collaborative_workspace') Collaborative Workspace
-                                    //-     option(value='feel_welcome') Feel Welcome
-                                    //- br
-                                    //- br
-                                    //- br
+                            p Select a need tag:
+                            select(name='need_tag')
+                                option(value='individual_workspace') Individual Workspace
+                                option(value='collaborative_workspace') Collaborative Workspace
+                                option(value='feel_welcome') Feel Welcome
+                            br
+                            br
+                            br
 
-                                    //- //- ONCHANGE submit - trying to submit 3 inputs from one form here for one overall call to update_card - right now it's stalling weirdly
-                                    //- p Select a challenge tag:
-                                    //- select(name='challenge_tag' onchange="this.form.submit()")
-                                    //-     option(value='squatters') Squatters
-                                    //-     option(value='space_problems') Space Problems
+                            //- ONCHANGE submit - trying to submit 3 inputs from one form here for one overall call to update_card - right now it's stalling weirdly
+                            p Select a challenge tag:
+                            select(name='challenge_tag' onchange="this.form.submit()")
+                                option(value='squatters') Squatters
+                                option(value='space_problems') Space Problems
+
+                            input(type='submit', name=card.email, value='submit')
+
+
 
             .container
                 br
