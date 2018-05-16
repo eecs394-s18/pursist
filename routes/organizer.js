@@ -43,10 +43,11 @@ router.post('/', function(req, res, next) {
 
         queries.updateCard(cardData, (response) => {
             if (!response){
-                console.log("[Alert] Writing card failed.");
+                console.log("[Alert] Updating card failed.");
             }
         });
 
+        res.redirect('/');
         // // first fetch the table
         // queries.fetchTable((tableData) =>
         // {
