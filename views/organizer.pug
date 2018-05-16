@@ -3,33 +3,107 @@ extends includes/layout
 block content
     h2.text-center Your cards:
     hr
+    //- .row.text-center.work-pad
+    //- right has cards that need to be assigned, left has cards already assigned
     .row.text-center.work-pad
-        if isEmpty
-            h3 There are no cards in the database yet.
-        else
-            each card in data
-                .col-md-3
-                    div.cardborder
-                        p
-                            b Goal:
-                            |  #{card.goal}
-                        p
-                            b Need:
-                            |  #{card.need}
-                        p
-                            b Current Solution:
-                            |  #{card.current_solution}
-                        p
-                            b Problem:
-                            |  #{card.problem}
-                        p
-                            b Comments:
-                            |  #{card.comment}
-                        p
-                            b Created By:
-                            |  #{card.email}
+        .column_big_bar
+            if isEmpty
+                h3 There are no cards in the database yet.
+            else
+                h1 Cards to tag:
+                each card in data
+                    if !card.goal_tag && !card.need_tag && !card.challenge_tag
+                        .column_inner
+                            div.cardborder_untagged
+                                p
+                                    b Goal:
+                                    |  #{card.goal}
+                                p
+                                    b Need:
+                                    |  #{card.need}
+                                p
+                                    b Current Solution:
+                                    |  #{card.current_solution}
+                                p
+                                    b Problem:
+                                    |  #{card.problem}
+                                p
+                                    b Comments:
+                                    |  #{card.comment}
+                                p
+                                    b Created By:
+                                    |  #{card.email}
 
-            .container
-                br
-                form.text-center(action='', method='post' style="margin-top: 20px")
-                    input(type='submit', name='export', value='export to csv')
+                                form(method='POST', action='/organizer')
+                                    p
+                                        b Select a goal tag:
+                                    select(name='goal_tag')
+                                        option(value='research') Research
+                                        option(value='community') Community
+
+                                    br
+                                    br
+                                    br
+
+                                    p
+                                        b Select a need tag:
+                                    select(name='need_tag')
+                                        option(value='individual_workspace') Individual Workspace
+                                        option(value='collaborative_workspace') Collaborative Workspace
+                                        option(value='feel_welcome') Feel Welcome
+                                    br
+                                    br
+                                    br
+
+                                    p
+                                        b Select a challenge tag:
+                                    select(name='challenge_tag')
+                                        option(value='squatters') Squatters
+                                        option(value='space_problems') Space Problems
+
+                                    //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
+                                    input(type='submit', name=card.id, value='submit')
+
+        // already tagged cards
+        .column_big_nobar
+            if isEmpty
+                h3 There are no cards in the database yet.
+            else
+                h1 Already tagged cards:
+                each card in data
+                    if card.goal_tag && card.need_tag && card.challenge_tag
+                        .column_inner
+                            div.cardborder_tagged
+                                p
+                                    b Goal:
+                                    |  #{card.goal}
+                                p
+                                    b Need:
+                                    |  #{card.need}
+                                p
+                                    b Current Solution:
+                                    |  #{card.current_solution}
+                                p
+                                    b Problem:
+                                    |  #{card.problem}
+                                p
+                                    b Comments:
+                                    |  #{card.comment}
+                                p
+                                    b Created By:
+                                    |  #{card.email}
+
+                                p
+                                    b Goal Tag:
+                                    |  #{card.goal_tag}
+                                p
+                                    b Need Tag:
+                                    |  #{card.need_tag}
+                                p
+                                    b Challenge Tag:
+                                    |  #{card.challenge_tag}
+
+
+
+
+

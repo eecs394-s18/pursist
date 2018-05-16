@@ -31,9 +31,63 @@ div.center{
 	text-align: center;
 }
 
-div.cardborder{
+div.cardborder_tagged{
   border-radius: 10px;
-    border: 2px solid #5277b2;
+    border: 2px solid #40e88e;
     padding: 20px;
-    box-shadow: 4px 9px #5277b2;
+    box-shadow: 4px 9px #40e88e;
+}
+
+div.cardborder_untagged{
+   border-radius: 10px;
+    border: 2px solid #e84c40;
+    padding: 20px;
+    box-shadow: 4px 9px #e84c40;
+}
+
+/*two column action*/
+* {
+    box-sizing: border-box;
+}
+
+/* Create two equal columns that floats next to each other */
+.column_big_nobar {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+
+
+/* Create two equal columns that floats next to each other */
+.column_big_bar {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    border-right: 3px solid;
+}
+
+.column_inner{
+  float: left;
+  width: 50%;
+  padding: 10px;
+
+
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column_big_nobar {
+        width: 100%;
+    }
+
+    .column_big_bar{
+      width: 100%;
+    }
 }
