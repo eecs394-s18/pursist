@@ -40,7 +40,7 @@ router.post('/', function(req, res, next) {
         }
     });
 
-    res.redirect('/');
+    res.redirect('/organizer');
         // // first fetch the table
         // queries.fetchTable((tableData) =>
         // {
