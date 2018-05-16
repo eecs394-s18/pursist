@@ -25,15 +25,22 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-        console.log(req.body);
+    var id = null;
+    Object.keys(req.body).forEach((key) =>
+    {
+        if (key != "goal_tag" && key != "need_tag" && key != "challenge_tag")
+        {
+            id = parseInt(key);
+        }
+    });
+    
+    queries.updateCard([id, req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
+        if (!response){
+            console.log("[Alert] Updating card failed.");
+        }
+    });
 
-        queries.updateCard([req.body.id, req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
-            if (!response){
-                console.log("[Alert] Updating card failed.");
-            }
-        });
-
-        res.redirect('/');
+    res.redirect('/');
         // // first fetch the table
         // queries.fetchTable((tableData) =>
         // {
