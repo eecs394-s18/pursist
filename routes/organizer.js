@@ -10,6 +10,7 @@ var fs = require('fs');
 const fields = ['goal', 'need', 'current_solution', 'problem', 'comment', 'email']
 
 router.get('/', function(req, res, next) {
+    // this is for just fetching and showing the table I think
     queries.fetchTable((tableData) =>
     {
         if (tableData.length > 0)
@@ -24,10 +25,35 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+
+    // here is where we're going to call the write card function again
+    cardData = {
+        goal: req.body.goal,
+        need: req.body.need,
+        current: req.body.current,
+        problem: req.body.problem,
+        comment: req.body.comment,
+        email: req.body.email,
+        // initialize these to null here - students don't sset them yet
+        goal_tag: req.body.goal_tag,
+        need_tag: req.body.need_tag,
+        challenge_tag: req.body.challenge_tag
+    };
+
+
+    queries.updateCard(cardData, (response) => {
+        if (!response){
+            console.log("[Alert] Writing card failed.");
+        }
+    });
+
+    // first fetch the table
     queries.fetchTable((tableData) =>
     {
         if (tableData.length > 0)
         {
+
+            // EXPORTING CSV
             try {
                 const csv = json2csv(tableData, { fields });
                 var fileName = moment().unix() + ".csv";
@@ -61,7 +87,11 @@ router.post('/', function(req, res, next) {
             catch(err) {
                 console.log(err);
             }
+
+
+            // res.redirect('/');
         }
+
         else
         {
             console.log("No data to export!");

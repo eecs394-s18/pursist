@@ -17,7 +17,11 @@ router.post('/', function(req, res, next) {
         current: req.body.current,
         problem: req.body.problem,
         comment: req.body.comment,
-        email: req.body.email
+        email: req.body.email,
+        // initialize these to null here - students don't sset them yet
+        goal_tag: null,
+        need_tag: null,
+        challenge_tag: null
     };
     queries.writeCard(cardData, (response) => {
         if (!response)
