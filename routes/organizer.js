@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
         console.log(req.body);
 
-        queries.updateCard([req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
+        queries.updateCard([req.body.id, req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
             if (!response){
                 console.log("[Alert] Updating card failed.");
             }
