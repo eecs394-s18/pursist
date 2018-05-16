@@ -36,13 +36,14 @@ block content
                         form(method='POST', action='/organizer')
                             p
                                 b Select a goal tag:
-                                    select(name='goal_tag')
+                                    select(name='goal_tag' onchange="this.form.submit()")
                                         option(value='research') Research
                                         option(value='community') Community
 
+
                                 // WHY DOES THIS DO EXPORT CSV ACTION
 
-                                input(type='submit', name='submit', value='Submit')
+                                //- input(type='submit', name='submit', value='Submit')
 
                             //- br
                             //- p
@@ -60,12 +61,16 @@ block content
                             //-             option(value='space_problems') Space Problems
 
 
+            //- input(type='submit', name='submit', value='Submit')
+
             .container
                 br
-                form.text-center(action='', method='post' style="margin-top: 20px")
 
+                //- EXPORT CSV BUTTON SHIT
+                //- form.text-center(action='', method='post' style="margin-top: 20px")
 
-                    input(type='submit', name='export', value='export to csv')
+                    //- button(type='submit' name='export' value='export to csv') Export to CSV
+                    //- input(type='submit', name='export', value='export to csv')
 
 
 
