@@ -13,6 +13,8 @@ CREATE TABLE {SCHEMA}.cards(
     need VARCHAR,
     current_solution VARCHAR,
     problem VARCHAR,
+    solution_ideas VARCHAR,
+    current_benefits VARCHAR,
     comment VARCHAR,
     email VARCHAR,
     goal_tag VARCHAR,
