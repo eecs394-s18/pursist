@@ -3,8 +3,35 @@ extends includes/layout
 block content
     .container.text-center
         a(href='newcard')
-            button(type='button') New Card
+            button.nav(type='button') New Card
         a(href='organizer')
-            button(type='button') Organizer
+            button.nav(type='button') Organizer
         a(href='diagrams')
-            button(type='button') Diagrams
+            button.nav(type='button') Diagrams
+    br
+    h2.text-center Requested Cards
+    .row.text-center.work-pad
+        if isEmpty
+            h3 There are no cards in the database yet.
+        else
+            each card in data
+                .col-md-3
+                    div.cardborder_untagged
+                        p
+                            b Goal:
+                            |  #{card.goal}
+                        p
+                            b Need:
+                            |  #{card.need}
+                        p
+                            b Current Solution:
+                            |  #{card.current_solution}
+                        p
+                            b Problem:
+                            |  #{card.problem}
+                        p
+                            b Comments:
+                            |  #{card.comment}
+                        p
+                            b Created By:
+                            |  #{card.email}
