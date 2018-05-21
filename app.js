@@ -44,9 +44,11 @@ var newCardRouter = require('./routes/newcard');
 var signinRouter = require('./routes/signin');
 var newuserRouter = require('./routes/newuser');
 var diagramsRouter = require('./routes/diagrams');
+var organizerDeleteRouter = require('./routes/organizerdelete');
 
 app.use('/', indexRouter);
 app.use('/organizer', organizerRouter);
+app.use('/organizerdelete', organizerDeleteRouter);
 app.use('/newcard', newCardRouter);
 app.use('/signin', signinRouter);
 app.use('/newuser', newuserRouter);
