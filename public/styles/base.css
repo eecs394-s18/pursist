@@ -13,6 +13,18 @@ p{
 	color: #09172d;
 }
 
+.nav {
+  background-color: #5277b2;
+  border: 1px solid white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
 #r1{
 	text-align: center;
 	border-radius: 10px;
