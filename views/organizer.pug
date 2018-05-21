@@ -74,8 +74,8 @@ block content
 
                                     //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
                                     input(type='submit', name=card.id, value='submit')
-                                    br
-                                    br
+                                br
+                                form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
 
         // already tagged cards
@@ -125,3 +125,6 @@ block content
                                 p
                                     b Challenge Tag:
                                     |  #{card.challenge_tag}
+                                br
+                                form(method='POST', action='/organizerdelete')
+                                    input(type='submit', name=card.id, value='delete')
