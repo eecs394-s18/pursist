@@ -24,8 +24,27 @@ router.get('/', function(req, res, next) {
     });
 });
 
+// router.delete('/', function(req, res){
+//     //var id = null;
+//     console.log("TEST");
+//     console.log(req.body);
+//     Object.keys(req.body).forEach((key) =>{
+//       if (key != "goal_tag" && key != "need_tag" && key != "challenge_tag")
+//       {
+//           id = parseInt(key);
+//       }
+//     })
+//
+//     queries.deleteCard([id], (response)=>{
+//       if (!response){
+//         console.log("[Alert] Could not delete.")
+//       }
+//     })
+// });
+
 router.post('/', function(req, res, next) {
     var id = null;
+    console.log(req.body);
     Object.keys(req.body).forEach((key) =>
     {
         if (key != "goal_tag" && key != "need_tag" && key != "challenge_tag")
@@ -33,13 +52,21 @@ router.post('/', function(req, res, next) {
             id = parseInt(key);
         }
     });
-    
-    queries.updateCard([id, req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
+    if (req.body[id] == 'delete'){
+      console.log("TESTT!!!!")
+      queries.deleteCard(id, (response) => {
         if (!response){
-            console.log("[Alert] Updating card failed.");
+          console.log("[Alert] Could not delete.");
         }
-    });
-
+      });
+    }
+    else if (req.body[id] == 'submit'){
+      queries.updateCard([id, req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
+          if (!response){
+              console.log("[Alert] Updating card failed.");
+          }
+      });
+    }
     res.redirect('/organizer');
         // // first fetch the table
         // queries.fetchTable((tableData) =>
