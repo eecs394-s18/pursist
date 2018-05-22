@@ -1,12 +1,11 @@
-import $ from 'jquery';
+var $ = require('jquery');
 
-import BpmnModeler from 'bpmn-js/lib/Modeler';
+// import BpmnModeler from 'bpmn-js/lib/Modeler';
+var BpmnModeler = require('bpmn-js');
+var _minDash = require('min-dash');
 
-import {
-  debounce
-} from 'min-dash';
 
-import diagramXML from '../resources/newDiagram.bpmn';
+var diagramXML = './newDiagram.bpmn';
 
 
 var container = $('#js-drop-zone');

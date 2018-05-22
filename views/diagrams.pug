@@ -2,52 +2,55 @@ extends includes/layout
 
 block content
     .row.text-center.work-pad
-        .column_big_nobar
-            if isEmpty
-                h3 There are no cards in the database yet.
-            each card in data
-                if card.goal_tag && card.need_tag && card.challenge_tag
-                    .column_inner
-                        div.cardborder_tagged
-                            p
-                                b Goal:
-                                |  #{card.goal}
-                            p
-                                b Need:
-                                |  #{card.need}
-                            p
-                                b Current Solution:
-                                |  #{card.current_solution}
-                            p
-                                b Problem:
-                                |  #{card.problem}
+        if isEmpty
+            h3.text-center There are no cards in the database yet.
+        each card in data
+            if !card.goal_tag && !card.need_tag && !card.challenge_tag
+                h3 No labeled cards
+            if card.goal_tag && card.need_tag && card.challenge_tag
+                .column_inner
+                    div.cardborder_tagged
+                        p
+                            b Goal:
+                            |  #{card.goal}
+                        p
+                            b Need:
+                            |  #{card.need}
+                        p
+                            b Current Solution:
+                            |  #{card.current_solution}
+                        p
+                            b Problem:
+                            |  #{card.problem}
 
-                            p
-                                b Solution Ideas:
-                                |  #{card.solution_ideas}
+                        p
+                            b Solution Ideas:
+                            |  #{card.solution_ideas}
 
-                            p
-                                b Current Benefits:
-                                |  #{card.current_benefits}
+                        p
+                            b Current Benefits:
+                            |  #{card.current_benefits}
 
-                            p
-                                b Comments:
-                                |  #{card.comment}
-                            p
-                                b Created By:
-                                |  #{card.email}
+                        p
+                            b Comments:
+                            |  #{card.comment}
+                        p
+                            b Created By:
+                            |  #{card.email}
 
-                            p
-                                b Goal Tag:
-                                |  #{card.goal_tag}
-                            p
-                                b Need Tag:
-                                |  #{card.need_tag}
-                            p
-                                b Challenge Tag:
-                                |  #{card.challenge_tag}
+                        p
+                            b Goal Tag:
+                            |  #{card.goal_tag}
+                        p
+                            b Need Tag:
+                            |  #{card.need_tag}
+                        p
+                            b Challenge Tag:
+                            |  #{card.challenge_tag}
+
         h2.text-center Placeholder for diagrams
         div(id='#canvas')
+
 
     style.
       html, body, #canvas {
@@ -74,11 +77,26 @@ block content
       bottom: 20px;
       left: 20px;
       }
+      #js-download-diagram {
+      position: fixed;
+      bottom: 20px;
+      left:150px;
+      }
+      #js-download-svg {
+      position: fixed;
+      bottom: 20px;
+      left:335px;
+      }
     #canvas
     button#save-button print to console
+    button#js-download-diagram download XML diagram
+    button#js-download-svg download diagram as image
     script.
+        var xml;
         var diagramUrl = 'https://cdn.rawgit.com/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
+        // var diagramUrl = '/Users/victoriacabales/Projects/EECS394/pursist/resources/newDiagram.bpmn';
         // modeler instance
+
         var bpmnModeler = new BpmnJS({
         container: '#canvas',
         keyboard: {
@@ -108,6 +126,7 @@ block content
         if (err) {
         return console.error('could not import BPMN 2.0 diagram', err);
         }
+
         // access modeler components
         var canvas = bpmnModeler.get('canvas');
         var overlays = bpmnModeler.get('overlays');
@@ -142,3 +161,108 @@ block content
         // wire save button
         $.get(diagramUrl, openDiagram, 'text');
         $('#save-button').click(exportDiagram);
+
+        function saveSVG(done) {
+          bpmnModeler.saveSVG(done);
+        }
+
+        function saveDiagram(done) {
+
+          bpmnModeler.saveXML({ format: true }, function(err, xml) {
+            done(err, xml);
+          });
+        }
+
+        function registerFileDrop(container, callback) {
+
+          function handleFileSelect(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            var files = e.dataTransfer.files;
+
+            var file = files[0];
+
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+
+              var xml = e.target.result;
+
+              callback(xml);
+            };
+
+            reader.readAsText(file);
+          }
+
+          function handleDragOver(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            e.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+          }
+
+          container.get(0).addEventListener('dragover', handleDragOver, false);
+          container.get(0).addEventListener('drop', handleFileSelect, false);
+        }
+
+        $(function() {
+
+          $('#js-create-diagram').click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            createNewDiagram();
+          });
+
+          var downloadLink = $('#js-download-diagram');
+          var downloadSvgLink = $('#js-download-svg');
+
+          $('.buttons a').click(function(e) {
+            if (!$(this).is('.active')) {
+              e.preventDefault();
+              e.stopPropagation();
+            }
+          });
+
+          function setEncoded(link, name, data) {
+            var encodedData = encodeURIComponent(data);
+
+            if (data) {
+              link.addClass('active').attr({
+                'href': 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData,
+                'download': name
+              });
+            } else {
+              link.removeClass('active');
+            }
+          }
+
+          function debounce(func, wait, immediate) {
+            var timeout;
+            return function() {
+              var context = this, args = arguments;
+              var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+              };
+              var callNow = immediate && !timeout;
+              clearTimeout(timeout);
+              timeout = setTimeout(later, wait);
+              if (callNow) func.apply(context, args);
+            };
+          };
+
+          var exportArtifacts = debounce(function() {
+
+            saveSVG(function(err, svg) {
+              setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
+            });
+
+            saveDiagram(function(err, xml) {
+              setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
+            });
+          }, 500);
+
+          bpmnModeler.on('commandStack.changed', exportArtifacts);
+        });
