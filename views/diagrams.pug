@@ -6,7 +6,7 @@ block content
             h3.text-center There are no cards in the database yet.
         each card in data
             if !card.goal_tag && !card.need_tag && !card.challenge_tag
-                h3 No labeled cards
+                h3.no-labels There are no labeled cards
             if card.goal_tag && card.need_tag && card.challenge_tag
                 .column_inner
                     div.cardborder_tagged
@@ -48,15 +48,19 @@ block content
                             b Challenge Tag:
                             |  #{card.challenge_tag}
 
-        h2.text-center Placeholder for diagrams
         div(id='#canvas')
 
 
     style.
-      html, body, #canvas {
+      html, body {
       height: 100%;
       padding: 0;
       margin: 0;
+      }
+      #canvas {
+      padding: 0;
+      margin: 0;
+      height: 75%;
       }
       .diagram-note {
       background-color: rgba(66, 180, 21, 0.7);
@@ -80,21 +84,18 @@ block content
       #js-download-diagram {
       position: fixed;
       bottom: 20px;
-      left:150px;
+      left:200px;
       }
-      #js-download-svg {
-      position: fixed;
-      bottom: 20px;
-      left:335px;
+      .no-labels {
+      padding-left: 2rem;
       }
     #canvas
-    button#save-button print to console
-    button#js-download-diagram download XML diagram
-    button#js-download-svg download diagram as image
+    button#save-button download XML diagram
+    button#js-download-diagram download image
     script.
         var xml;
         var diagramUrl = 'https://cdn.rawgit.com/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
-        // var diagramUrl = '/Users/victoriacabales/Projects/EECS394/pursist/resources/newDiagram.bpmn';
+        // var diagramUrl = '../resources/newDiagram.bpmn';
         // modeler instance
 
         var bpmnModeler = new BpmnJS({
@@ -103,16 +104,20 @@ block content
         bindTo: window
         }
         });
-        /**
-        * Save diagram contents and print them to the console.
-        */
         function exportDiagram() {
         bpmnModeler.saveXML({ format: true }, function(err, xml) {
         if (err) {
         return console.error('could not save BPMN 2.0 diagram', err);
         }
-        alert('Diagram exported. Check the developer tools!');
+        //alert('Diagram exported. Check the developer tools!');
         console.log('DIAGRAM', xml);
+        var file = new Blob([xml], {type: 'bpmn'});
+        url = URL.createObjectURL(file);
+        var link = document.createElement('a');
+        link.download = 'diagram.bpmn';
+        link.href = url;
+        link.click();
+
         });
         }
         /**
@@ -158,111 +163,35 @@ block content
         httpRequest.send()
         */
 
-        // wire save button
-        $.get(diagramUrl, openDiagram, 'text');
-        $('#save-button').click(exportDiagram);
+        function setEncoded(name, data) {
+          var encodedData = encodeURIComponent(data);
+          var link = document.createElement('a');
+
+          if (data) {
+            link.classList.add('active').attr({
+              'href': 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData,
+              'download': name
+            });
+          } else {
+            link.removeClass('active');
+          }
+        }
 
         function saveSVG(done) {
           bpmnModeler.saveSVG(done);
         }
 
-        function saveDiagram(done) {
+        function exportSVG() {
+          saveSVG((err,svg) => {
 
-          bpmnModeler.saveXML({ format: true }, function(err, xml) {
-            done(err, xml);
-          });
-        }
-
-        function registerFileDrop(container, callback) {
-
-          function handleFileSelect(e) {
-            e.stopPropagation();
-            e.preventDefault();
-
-            var files = e.dataTransfer.files;
-
-            var file = files[0];
-
-            var reader = new FileReader();
-
-            reader.onload = function(e) {
-
-              var xml = e.target.result;
-
-              callback(xml);
-            };
-
-            reader.readAsText(file);
-          }
-
-          function handleDragOver(e) {
-            e.stopPropagation();
-            e.preventDefault();
-
-            e.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
-          }
-
-          container.get(0).addEventListener('dragover', handleDragOver, false);
-          container.get(0).addEventListener('drop', handleFileSelect, false);
-        }
-
-        $(function() {
-
-          $('#js-create-diagram').click(function(e) {
-            e.stopPropagation();
-            e.preventDefault();
-
-            createNewDiagram();
-          });
-
-          var downloadLink = $('#js-download-diagram');
-          var downloadSvgLink = $('#js-download-svg');
-
-          $('.buttons a').click(function(e) {
-            if (!$(this).is('.active')) {
-              e.preventDefault();
-              e.stopPropagation();
+            setEncoded('diagram.svg', err ? null : svg);
+            if (err) {
+              console.log("failed to save svg");
             }
-          });
-
-          function setEncoded(link, name, data) {
-            var encodedData = encodeURIComponent(data);
-
-            if (data) {
-              link.addClass('active').attr({
-                'href': 'data:application/bpmn20-xml;charset=UTF-8,' + encodedData,
-                'download': name
-              });
-            } else {
-              link.removeClass('active');
-            }
-          }
-
-          function debounce(func, wait, immediate) {
-            var timeout;
-            return function() {
-              var context = this, args = arguments;
-              var later = function() {
-                timeout = null;
-                if (!immediate) func.apply(context, args);
-              };
-              var callNow = immediate && !timeout;
-              clearTimeout(timeout);
-              timeout = setTimeout(later, wait);
-              if (callNow) func.apply(context, args);
-            };
-          };
-
-          var exportArtifacts = debounce(function() {
-
-            saveSVG(function(err, svg) {
-              setEncoded(downloadSvgLink, 'diagram.svg', err ? null : svg);
-            });
-
-            saveDiagram(function(err, xml) {
-              setEncoded(downloadLink, 'diagram.bpmn', err ? null : xml);
-            });
           }, 500);
+        }
 
-          bpmnModeler.on('commandStack.changed', exportArtifacts);
-        });
+        // wire save button
+        $.get(diagramUrl, openDiagram, 'text');
+        $('#save-button').click(exportDiagram);
+        $('#js-download-diagram').click(exportSVG);
