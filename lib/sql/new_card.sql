@@ -7,9 +7,15 @@ INSERT INTO {SCHEMA}.cards(
     current_benefits,
     comment,
     email,
-    goal_tag,
-    need_tag,
-    challenge_tag
+    var1,
+    link12,
+    var2,
+    link23,
+    var3,
+    -- link34,
+    -- var4,
+    -- link45,
+    -- var5
 )
 VALUES (
     $1,
@@ -22,5 +28,11 @@ VALUES (
     $8,
     $9,
     $10,
-    $11
+    $11,
+    $12,
+    $13
+    -- $14,
+    -- $15,
+    -- $16,
+    -- $17
 )
