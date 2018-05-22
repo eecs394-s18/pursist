@@ -2,6 +2,7 @@ extends includes/layout
 
 block content
     .row.text-center.work-pad
+        // p #{xmlFile}
         if isEmpty
             h3.text-center There are no cards in the database yet.
         each card in data
@@ -94,9 +95,10 @@ block content
     button#js-download-diagram download image
     script.
         var xml;
-        var diagramUrl = 'https://cdn.rawgit.com/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
-        // var diagramUrl = '../resources/newDiagram.bpmn';
+        // var diagramUrl = 'https://cdn.rawgit.com/bpmn-io/bpmn-js-examples/dfceecba/starter/diagram.bpmn';
+        var diagramUrl = '../resources/newDiagram.bpmn';
         // modeler instance
+        //var diagramUrl = xmlFile;
 
         var bpmnModeler = new BpmnJS({
         container: '#canvas',
@@ -176,7 +178,7 @@ block content
             link.removeClass('active');
           }
         }
-
+        /*
         function saveSVG(done) {
           bpmnModeler.saveSVG(done);
         }
@@ -190,6 +192,7 @@ block content
             }
           }, 500);
         }
+        */
 
         // wire save button
         $.get(diagramUrl, openDiagram, 'text');
