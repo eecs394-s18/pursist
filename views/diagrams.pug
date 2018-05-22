@@ -1,8 +1,53 @@
 extends includes/layout
 
 block content
-    h2.text-center Placeholder for diagrams
-    div(id='#canvas')
+    .row.text-center.work-pad
+        .column_big_nobar
+            if isEmpty
+                h3 There are no cards in the database yet.
+            each card in data
+                if card.goal_tag && card.need_tag && card.challenge_tag
+                    .column_inner
+                        div.cardborder_tagged
+                            p
+                                b Goal:
+                                |  #{card.goal}
+                            p
+                                b Need:
+                                |  #{card.need}
+                            p
+                                b Current Solution:
+                                |  #{card.current_solution}
+                            p
+                                b Problem:
+                                |  #{card.problem}
+
+                            p
+                                b Solution Ideas:
+                                |  #{card.solution_ideas}
+
+                            p
+                                b Current Benefits:
+                                |  #{card.current_benefits}
+
+                            p
+                                b Comments:
+                                |  #{card.comment}
+                            p
+                                b Created By:
+                                |  #{card.email}
+
+                            p
+                                b Goal Tag:
+                                |  #{card.goal_tag}
+                            p
+                                b Need Tag:
+                                |  #{card.need_tag}
+                            p
+                                b Challenge Tag:
+                                |  #{card.challenge_tag}
+        h2.text-center Placeholder for diagrams
+        div(id='#canvas')
 
     style.
       html, body, #canvas {
@@ -93,7 +138,7 @@ block content
         httpRequest.open('GET', diagramUrl)
         httpRequest.send()
         */
-        
+
         // wire save button
         $.get(diagramUrl, openDiagram, 'text');
         $('#save-button').click(exportDiagram);
