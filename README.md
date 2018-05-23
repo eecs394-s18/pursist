@@ -1,10 +1,17 @@
 # pursist
 Purple Team client project - Stakeholder Input Synthesis Tool
 
-## Set-up Local Database (on a Mac)
+## Set up Local Database (on a Mac)
 1) Install the [Postgres App](https://postgresapp.com/) and [pgAdmin](https://www.pgadmin.org/download/pgadmin-4-macos/)
 
 2) Open the Postgres app and create a new server. Make sure to use port 5432. The name doesn't really matter. Make sure the directory you choose is empty, and then initialize the server.
+
+## Set up session handling (on a Mac)
+1) Install the redis using Homebrew: ```brew install redis```
+
+2) Start the redis server from the command line, leaving the terminal window open: ```redis-server```
+
+3) When done using the app, stop the redis server with ^C.
 
 ## Run Instructions
 ```
