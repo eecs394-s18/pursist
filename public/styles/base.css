@@ -132,7 +132,7 @@ div.cardborder_untagged{
 .navbar-nav > li > a:hover, .navbar-nav >li > a:focus {
   background-color: #dba1f4;
   color: #fff;
-  border-radius: 5px !important; 
+  border-radius: 5px !important;
 }
 
 .nav-link {
@@ -153,6 +153,7 @@ div.cardborder_untagged{
 .navbar-collapse {
   background-color: #dba1f4;
   color: #fff;
+  height: 1em;
 }
 
 .navbar-toggler {
