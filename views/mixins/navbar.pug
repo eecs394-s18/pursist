@@ -1,0 +1,25 @@
+mixin nav-mix(user)
+    header
+        nav.navbar.navbar-expand-md.navbar-default.fixed-top
+            .navbar-header
+                a.navbar-brand(href='/') pursist
+            button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarCollapse', aria-controls='navbarCollapse', aria-expanded='false', aria-label='Toggle navigation')
+                i.feather-nav(data-feather='menu')
+            #navbarCollapse.collapse.navbar-collapse
+                ul.navbar-nav.mr-auto
+                    li.nav-item
+                        a.nav-link(href='/') Home 
+                    li.nav-item
+                        a.nav-link(href='/diagrams') Diagrams
+                        
+                ul.navbar-nav.ml-auto
+                    li.nav-item
+                        button.btn.feather-btn(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+                            i.feather-nav(data-feather='user')
+                        .dropdown-menu.dropdown-menu-right(aria-labelledby='dropdownMenuButton')
+                            if (user && user.loggedIn)
+                                a.dropdown-item(href='/organizer') Organizer Tools
+                                .dropdown-divider
+                                a.dropdown-item(href='/logout') Sign Out
+                            else
+                                a.dropdown-item(href='/signin') Sign In
