@@ -10,15 +10,21 @@ var fs = require('fs');
 const fields = ['goal', 'need', 'current_solution', 'problem', 'comment', 'email']
 
 router.get('/', function(req, res, next) {
+    var userVar = null;
+    if (req.session && req.session.loggedIn)
+    {
+        userVar = req.session;
+    }
+
     queries.fetchTable((tableData) =>
     {
         if (tableData.length > 0)
         {
-            res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false});
+            res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false, user: userVar});
         }
         else
         {
-            res.render('organizer', {title: 'Organizer', data: null, isEmpty: true});
+            res.render('organizer', {title: 'Organizer', data: null, isEmpty: true, user: userVar});
         }
     });
 });

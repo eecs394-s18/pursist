@@ -11,22 +11,27 @@ const fields = ['goal', 'need', 'current_solution', 'problem', 'solution_ideas',
 
 router.get('/', function(req, res, next) {
     // this is for just fetching and showing the table I think
+    var userVar = null;
+    if (req.session && req.session.loggedIn)
+    {
+        userVar = req.session;
+    }
+
     queries.fetchTable((tableData) =>
     {
         if (tableData.length > 0)
         {
-            res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false});
+            res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false, user: userVar});
         }
         else
         {
-            res.render('organizer', {title: 'Organizer', data: null, isEmpty: true});
+            res.render('organizer', {title: 'Organizer', data: null, isEmpty: true, user: userVar});
         }
     });
 });
 
 router.post('/', function(req, res, next) {
     var id = null;
-    console.log(req.body);
     Object.keys(req.body).forEach((key) =>
     {
         if (key != "var1" && key != "link12" && key != "var2" && key != "link23" && key != "var3")
@@ -40,58 +45,6 @@ router.post('/', function(req, res, next) {
         }
     });
     res.redirect('/organizer');
-        // // first fetch the table
-        // queries.fetchTable((tableData) =>
-        // {
-        //     if (tableData.length > 0)
-        //     {
-
-        //         // EXPORTING CSV
-        //         try {
-        //             const csv = json2csv(tableData, { fields });
-        //             var fileName = moment().unix() + ".csv";
-        //             !fs.existsSync("_temp") && fs.mkdirSync("_temp");
-        //             fs.appendFile('_temp/' + fileName, csv, (err) =>
-        //             {
-        //                 if (err) throw err;
-        //                 res.download('_temp/' + fileName, fileName, (err) =>
-        //                 {
-        //                     if (err)
-        //                     {
-        //                         console.log(err);
-        //                     }
-        //                     else
-        //                     {
-        //                         fs.unlink('_temp/' + fileName, (err) =>
-        //                         {
-        //                             if (err)
-        //                             {
-        //                                 console.log(err);
-        //                             }
-        //                             else
-        //                             {
-        //                                 console.log("[Alert] File " + fileName + " served and deleted.");
-        //                             }
-        //                         });
-        //                     }
-        //                 });
-        //             });
-        //         }
-        //         catch(err) {
-        //             console.log(err);
-        //         }
-
-
-        //         // res.redirect('/');
-        //     }
-
-        //     else
-        //     {
-        //         console.log("No data to export!");
-        //         // this is a good place to redirect the page with some params to have it create an alert or something
-        //         res.redirect('/');
-        //     }
-        // });
 });
 
 module.exports = router;
