@@ -7,6 +7,10 @@ a {
   color: #00B7FF;
 }
 
+.linkbuttons input[type="radio"]{
+    margin-right:10px;
+    font-size: 50px;
+}
 
 p{
 	font-size: 15px;
