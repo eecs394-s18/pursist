@@ -5,7 +5,15 @@ var path = require('path');
 var queries = require(path.join('../lib/queries'));
 
 router.get('/', function(req, res, next) {
-    res.render('signin', { title: 'Sign In' });
+    if (req.session && req.session.loggedIn)
+    {
+        res.redirect('/');
+    }
+    else
+    {
+        res.render('signin', {  title: 'Sign In', 
+                                user: {loggedIn: false}});
+    }
 });
 
 router.post('/', function(req, res, next) {
@@ -16,7 +24,7 @@ router.post('/', function(req, res, next) {
     {
         if (response == undefined || response.length == 0) 
         {
-            // set up a valid user session
+            req.session.loggedIn = true;
             res.redirect('/organizer');
         }
         else
