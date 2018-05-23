@@ -6,7 +6,13 @@ var queries = require(path.join('../lib/queries'));
 
 router.get('/', function(req, res, next) {
     var sampleText = "";
-    res.render('newcard', { title: 'Participant Input Page' }); /*info: sampleText*/
+    var userVar = null;
+    if (req.session && req.session.loggedIn)
+    {
+        userVar = req.session;
+    }
+
+    res.render('newcard', { title: 'Participant Input Page' , user: userVar}); /*info: sampleText*/
 });
 
 router.post('/', function(req, res, next) {

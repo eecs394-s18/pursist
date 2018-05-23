@@ -5,7 +5,20 @@ var path = require('path');
 var queries = require(path.join('../lib/queries'));
 
 router.get('/', function(req, res, next) {
-    res.render('newuser', { title: 'Create Account'});
+    var userVar = null;
+    if (req.session && req.session.loggedIn)
+    {
+        userVar = req.session;
+    }
+
+    if (req.session && req.session.loggedIn)
+    {
+        res.redirect('/');
+    }
+    else
+    {
+        res.render('newuser', { title: 'Create Account', user: userVar});
+    }
 });
 
 router.post('/', function(req, res, next) {

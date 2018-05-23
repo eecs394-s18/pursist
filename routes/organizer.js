@@ -11,22 +11,27 @@ const fields = ['goal', 'need', 'current_solution', 'problem', 'comment', 'email
 
 router.get('/', function(req, res, next) {
     // this is for just fetching and showing the table I think
+    var userVar = null;
+    if (req.session && req.session.loggedIn)
+    {
+        userVar = req.session;
+    }
+
     queries.fetchTable((tableData) =>
     {
         if (tableData.length > 0)
         {
-            res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false});
+            res.render('organizer', {title: 'Organizer', data: tableData, isEmpty: false, user: userVar});
         }
         else
         {
-            res.render('organizer', {title: 'Organizer', data: null, isEmpty: true});
+            res.render('organizer', {title: 'Organizer', data: null, isEmpty: true, user: userVar});
         }
     });
 });
 
 router.post('/', function(req, res, next) {
     var id = null;
-    console.log(req.body);
     Object.keys(req.body).forEach((key) =>
     {
         if (key != "goal_tag" && key != "need_tag" && key != "challenge_tag")

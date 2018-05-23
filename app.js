@@ -18,6 +18,51 @@ require('dotenv').load();
 var currentENV = process.env.NODE_ENV;
 
 /*
+    Set up user session handling
+*/
+
+var     session = require('express-session');
+        RedisStore = require('connect-redis')(session)
+        url = require('url');
+
+if (currentENV === "development")
+{
+    console.log("[Alert] Attempting to connect to Redis launched in development.")
+
+    app.use(session({       secret: process.env.REDIS_SECRET,
+                            store: new RedisStore({
+                                host: "localhost",
+                                port: 6379
+                            }),
+                            resave: false,
+                            saveUninitialized: false,
+                            cookie: {maxAge: 60 * 60 * 1000} // expire after an hour
+                    }));
+}
+else if (currentENV === "production")
+{
+    console.log("[Alert] Attempting to connect to Redis launched in production.")
+    var redisURL   = require("url").parse(process.env.REDISTOGO_URL);
+    var redisAuth = redisURL.auth.split(':');
+    const DB_NUMBER = 0;
+    app.use(session({       secret: process.env.REDIS_SECRET,
+                            store: new RedisStore({
+                                host: redisURL.hostname,
+                                port: redisURL.port,
+                                db: DB_NUMBER,
+                                pass: redisAuth[1]
+                            }),
+                            resave: false,
+                            saveUninitialized: false,
+                            cookie: {maxAge: 60 * 60 * 1000} // expire after an hour
+                    }));
+}
+else
+{
+    console.log("[Error]: NODE_ENV is not valid.");
+}
+
+/*
     Postgres set-up and connection:
 */
 
@@ -42,6 +87,7 @@ var indexRouter = require('./routes/index');
 var organizerRouter = require('./routes/organizer');
 var newCardRouter = require('./routes/newcard');
 var signinRouter = require('./routes/signin');
+var signoutRouter = require('./routes/logout');
 var newuserRouter = require('./routes/newuser');
 var diagramsRouter = require('./routes/diagrams');
 var organizerDeleteRouter = require('./routes/organizerdelete');
@@ -51,6 +97,7 @@ app.use('/organizer', organizerRouter);
 app.use('/organizerdelete', organizerDeleteRouter);
 app.use('/newcard', newCardRouter);
 app.use('/signin', signinRouter);
+app.use('/logout', signoutRouter);
 app.use('/newuser', newuserRouter);
 app.use('/diagrams', diagramsRouter);
 
