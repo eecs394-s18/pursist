@@ -51,51 +51,41 @@ block content
 
         // already tagged cards
         .column_big_nobar
-            if isEmpty
-                h3 There are no cards in the database yet.
-            else
-                h1 Already tagged cards:
-                each card in data
-                    if card.goal_tag && card.need_tag && card.challenge_tag
-                        .column_inner
-                            div.cardborder_tagged
-                                p
-                                    b Goal:
-                                    |  #{card.goal}
-                                p
-                                    b Need:
-                                    |  #{card.need}
-                                p
-                                    b Current Solution:
-                                    |  #{card.current_solution}
-                                p
-                                    b Problem:
-                                    |  #{card.problem}
+            h2 Create Causal Chain:
+            br
 
-                                p
-                                    b Solution Ideas:
-                                    |  #{card.solution_ideas}
+            //- still haven't written code for the 'newcausalchain' aciton
+            //- should post the new causal chain to the database
+            form(method='POST', action='/newcausalchain')
+                  div.center
+                        input(type='text' id="r1" name='var1' placeholder='causal variable')
+                  br
+                  
+                  div.center
+                        a(href='')
+                            button.nav(type='button') +
+                        a(href='')
+                            button.nav(type='button') -
 
-                                p
-                                    b Current Benefits:
-                                    |  #{card.current_benefits}
+                  br
 
-                                p
-                                    b Comments:
-                                    |  #{card.comment}
-                                p
-                                    b Created By:
-                                    |  #{card.email}
+                  div.center
+                        input(type='text' id="r1" name='var2' placeholder='causal variable')
+                  br
 
-                                p
-                                    b Goal Tag:
-                                    |  #{card.goal_tag}
-                                p
-                                    b Need Tag:
-                                    |  #{card.need_tag}
-                                p
-                                    b Challenge Tag:
-                                    |  #{card.challenge_tag}
-                                br
-                                form(method='POST', action='/organizerdelete')
-                                    input(type='submit', name=card.id, value='delete')
+                  div.center
+                        a(href='')
+                            button.nav(type='button') +
+                        a(href='')
+                            button.nav(type='button') -
+
+                  br
+
+                  div.center
+                        input(type='text' id="r1" name='var3' placeholder='causal variable')
+                  
+                  br
+                  br
+
+                  div.center
+                        input(type='submit' value='Submit')
