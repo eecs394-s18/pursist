@@ -1,5 +1,6 @@
 body {
   padding: 50px;
+  padding-top: 80px;
   font: 14px "Lato", Helvetica, Arial, sans-serif;
 }
 
@@ -106,4 +107,54 @@ div.cardborder_untagged{
     .column_big_bar{
       width: 100%;
     }
+}
+
+/* Nav-bar stuff */
+.feather-nav {
+  height: 25px;
+  margin-top: 5px;
+  width: auto;
+}
+
+.feather-btn {
+  color: #ffffff;
+  background-color: Transparent;
+}
+
+.navbar {
+  font-family: 'Lato' !important;
+  background-color: #dba1f4;
+  line-height: 2em;
+  height: 5em;
+  padding-bottom: 10px;
+}
+
+.navbar-nav > li > a:hover, .navbar-nav >li > a:focus {
+  background-color: #dba1f4;
+  color: #fff;
+  border-radius: 5px !important; 
+}
+
+.nav-link {
+  font-size: 1.25em;
+  margin-left: 20px;
+  color: #fff;
+}
+
+.navbar-header a:hover, a:focus{
+  color: #fff;
+}
+
+.navbar-brand {
+  font-size: 1.3em;
+  color: #ffffff;
+}
+
+.navbar-collapse {
+  background-color: #dba1f4;
+  color: #fff;
+}
+
+.navbar-toggler {
+  color: #fff;
 }
