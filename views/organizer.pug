@@ -56,7 +56,14 @@ block content
 
                                     p
 
-                                    input(type='text' id="r1" name='link12' placeholder='link 1-2')
+                                    input#link12choice1(type="radio" name="link12" value="+")
+                                    label(for="link12choice1") +
+
+                                    input#link12choice2(type="radio" name="link12" value="-")
+                                    label(for="link12choice2")   -
+
+
+                                    //- input(type='text' id="r1" name='link12' placeholder='link 1-2')
                                     br
                                     br
 
@@ -67,7 +74,13 @@ block content
                                     br
 
                                     p
-                                    input(type='text' id="r1" name='link23' placeholder='link 2-3')
+                                    //- input(type='text' id="r1" name='link23' placeholder='link 2-3')
+                                    input#link23choice1(type="radio" name="link23" value="+")
+                                    label(for="link23choice1") +
+
+                                    input#link12choice2(type="radio" name="link23" value="-")
+                                    label(for="link23choice2") -
+
                                     br
                                     br
 
