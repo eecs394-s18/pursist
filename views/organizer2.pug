@@ -1,0 +1,91 @@
+extends includes/layout
+
+block content
+    h2.text-center Organizer:
+    hr
+    //- .row.text-center.work-pad
+    //- right has cards that need to be assigned, left has cards already assigned
+    .row.text-center.work-pad
+        .column_big_bar
+            if isEmpty
+                h3 There are no cards in the database yet.
+            else
+                h1 Untagged Cards:
+                each card in data
+                    if !card.goal_tag && !card.need_tag && !card.challenge_tag
+                        .column_inner
+                            div.cardborder_untagged
+                                p
+                                    b Goal:
+                                    |  #{card.goal}
+                                p
+                                    b Need:
+                                    |  #{card.need}
+                                p
+                                    b Current Solution:
+                                    |  #{card.current_solution}
+                                p
+                                    b Problem:
+                                    |  #{card.problem}
+
+                                p
+                                    b Solution Ideas:
+                                    |  #{card.solution_ideas}
+
+                                p
+                                    b Current Benefits:
+                                    |  #{card.current_benefits}
+
+                                p
+                                    b Comments:
+                                    |  #{card.comment}
+                                p
+                                    b Created By:
+                                    |  #{card.email}
+
+
+                                //- instead of a submit, change this to a checkmark type thing
+                                //- card is checkmarked if a causal chain has been created for it
+                                form(method='POST', action='/organizerdelete')
+                                    input(type='submit', name=card.id, value='delete')
+
+        // already tagged cards
+        .column_big_nobar
+            h2 Create Causal Chain:
+            br
+
+            //- still haven't written code for the 'newcausalchain' aciton
+            //- should post the new causal chain to the database
+            form(method='POST', action='/newcausalchain')
+                  div.center
+                        input(type='text' id="r1" name='var1' placeholder='causal variable')
+                  br
+                  
+                  div.center
+                        a(href='')
+                            button.nav(type='button') +
+                        a(href='')
+                            button.nav(type='button') -
+
+                  br
+
+                  div.center
+                        input(type='text' id="r1" name='var2' placeholder='causal variable')
+                  br
+
+                  div.center
+                        a(href='')
+                            button.nav(type='button') +
+                        a(href='')
+                            button.nav(type='button') -
+
+                  br
+
+                  div.center
+                        input(type='text' id="r1" name='var3' placeholder='causal variable')
+                  
+                  br
+                  br
+
+                  div.center
+                        input(type='submit' value='Submit')
