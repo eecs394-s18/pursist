@@ -7,7 +7,7 @@ var json2csv = require('json2csv').parse;
 var moment = require('moment');
 var fs = require('fs');
 
-const fields = ['goal', 'need', 'current_solution', 'problem', 'comment', 'email']
+const fields = ['goal', 'need', 'current_solution', 'problem', 'solution_ideas', 'current_benefits', 'comment', 'email']
 
 router.get('/', function(req, res, next) {
     // this is for just fetching and showing the table I think
@@ -29,12 +29,12 @@ router.post('/', function(req, res, next) {
     console.log(req.body);
     Object.keys(req.body).forEach((key) =>
     {
-        if (key != "goal_tag" && key != "need_tag" && key != "challenge_tag")
+        if (key != "var1" && key != "link12" && key != "var2" && key != "link23" && key != "var3")
         {
             id = parseInt(key);
         }
     });
-    queries.updateCard([id, req.body.goal_tag, req.body.need_tag, req.body.challenge_tag], (response) => {
+    queries.updateCard([id, req.body.var1, req.body.link12, req.body.var2, req.body.link23, req.body.var3], (response) => {
         if (!response){
             console.log("[Alert] Updating card failed.");
         }

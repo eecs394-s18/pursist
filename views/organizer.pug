@@ -14,7 +14,7 @@ block content
                 each card in data
 
                     //-  CARDS THAT HAVENT BEEN ASSIGNED
-                    if !card.goal_tag && !card.need_tag && !card.challenge_tag
+                    if !card.var1 && !card.link12 && !card.var2 && !card.link23 && !card.var3
                         .column_inner
                             div.cardborder_untagged
                                 p
@@ -120,8 +120,7 @@ block content
             else
                 h1 Already tagged cards:
                 each card in data
-                    if card.goal_tag && card.need_tag && card.challenge_tag
-                        .column_inner
+                    if card.var1 && card.link12 && card.var2 && card.link23 && card.var3
                             div.cardborder_tagged
                                 p
                                     b Goal:
