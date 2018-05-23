@@ -14,14 +14,18 @@ router.post('/', function(req, res, next) {
     cardData = {
         goal: req.body.goal,
         need: req.body.need,
-        current: req.body.current,
+        current_solution: req.body.current_solution,
         problem: req.body.problem,
+        solution_ideas: req.body.solution_ideas,
+        current_benefits: req.body.current_benefits,
         comment: req.body.comment,
         email: req.body.email,
         // initialize these to null here - students don't sset them yet
-        goal_tag: null,
-        need_tag: null,
-        challenge_tag: null
+        var1: null,
+        link12: null,
+        var2: null,
+        link23: null,
+        var3: null
     };
     queries.writeCard(cardData, (response) => {
         if (!response)

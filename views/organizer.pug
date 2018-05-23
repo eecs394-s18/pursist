@@ -12,7 +12,9 @@ block content
             else
                 h1 Cards to tag:
                 each card in data
-                    if !card.goal_tag && !card.need_tag && !card.challenge_tag
+
+                    //-  CARDS THAT HAVENT BEEN ASSIGNED
+                    if !card.var1 && !card.link12 && !card.var2 && !card.link23 && !card.var3
                         .column_inner
                             div.cardborder_untagged
                                 p
@@ -43,50 +45,78 @@ block content
                                     b Created By:
                                     |  #{card.email}
 
-
-
+                                br
                                 form(method='POST', action='/organizer')
                                     p
-                                        b Select a goal tag:
-                                    select(name='goal_tag')
-                                        option(value='research') Research
-                                        option(value='community') Community
-
-                                    br
-                                    br
-                                    br
+                                    input(type='text' id="r1" name='var1' placeholder='causal variable 1')
 
                                     p
-                                        b Select a need tag:
-                                    select(name='need_tag')
-                                        option(value='individual_workspace') Individual Workspace
-                                        option(value='collaborative_workspace') Collaborative Workspace
-                                        option(value='feel_welcome') Feel Welcome
-                                    br
-                                    br
-                                    br
+
+                                    label(for="link12choice1") +
+                                    input#link12choice1(type="radio" name="link12" value="+")
+
+
+                                    label(for="link12choice2")   -
+                                    input#link12choice2(type="radio" name="link12" value="-")
+
+
 
                                     p
-                                        b Select a challenge tag:
-                                    select(name='challenge_tag')
-                                        option(value='squatters') Squatters
-                                        option(value='space_problems') Space Problems
+                                    input(type='text' id="r1" name='var2' placeholder='causal variable 2')
 
+                                    p
+
+                                    label(for="link23choice1") +
+                                    input#link23choice1(type="radio" name="link23" value="+")
+
+                                    label(for="link23choice2") -
+                                    input#link23choice2(type="radio" name="link23" value="-")
+
+
+                                    p
+                                    input(type='text' id="r1" name='var3' placeholder='causal variable 3')
+
+
+                                    //- p
+                                    //-     b Link 3-4
+                                    //- input(type='text' id="r1" name='link34' placeholder='link 3-4')
+                                    //- br
+                                    //- br
+
+
+                                    //- p
+                                    //-     b Variable 4:
+                                    //- input(type='text' id="r1" name='var4' placeholder='variable 4')
+
+                                    //- br
+                                    //- br
+
+                                    //- p
+                                    //-     b Link 4-5
+                                    //- input(type='text' id="r1" name='link45' placeholder='link 4-5')
+                                    //- br
+                                    //- br
+
+                                    //- p
+                                    //-     b Variable 5:
+                                    //- input(type='text' id="r1" name='var5' placeholder='variable 5')
+
+                                    br
+                                    br
                                     //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
                                     input(type='submit', name=card.id, value='submit')
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
 
-        // already tagged cards
+        // ALREADY TAGGED CARDS
         .column_big_nobar
             if isEmpty
                 h3 There are no cards in the database yet.
             else
                 h1 Already tagged cards:
                 each card in data
-                    if card.goal_tag && card.need_tag && card.challenge_tag
-                        .column_inner
+                    if card.var1 && card.link12 && card.var2 && card.link23 && card.var3
                             div.cardborder_tagged
                                 p
                                     b Goal:
@@ -117,14 +147,38 @@ block content
                                     |  #{card.email}
 
                                 p
-                                    b Goal Tag:
-                                    |  #{card.goal_tag}
+                                    b Variable 1:
+                                    |  #{card.var1}
                                 p
-                                    b Need Tag:
-                                    |  #{card.need_tag}
+                                    b Link 1-2:
+                                    |  #{card.link12}
+
                                 p
-                                    b Challenge Tag:
-                                    |  #{card.challenge_tag}
+                                    b Variable 2:
+                                    |  #{card.var2}
+                                p
+                                    b Link 2-3:
+                                    |  #{card.link23}
+
+                                p
+                                    b Variable 3:
+                                    |  #{card.var3}
+                                //- p
+                                //-     b Link 3-4:
+                                //-     |  #{card.link34}
+
+                                //- p
+                                //-     b Variable 4:
+                                //-     |  #{card.var4}
+                                //- p
+                                //-     b Link 4-5:
+                                //-     |  #{card.link45}
+
+                                //- p
+                                //-     b Variable 5:
+                                //-     |  #{card.var5}
+
+
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')

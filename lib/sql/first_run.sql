@@ -17,7 +17,13 @@ CREATE TABLE {SCHEMA}.cards(
     current_benefits VARCHAR,
     comment VARCHAR,
     email VARCHAR,
-    goal_tag VARCHAR,
-    need_tag VARCHAR,
-    challenge_tag VARCHAR
+    var1 VARCHAR,
+    link12 VARCHAR,
+    var2 VARCHAR,
+    link23 VARCHAR,
+    var3 VARCHAR
+    -- link34 VARCHAR,
+    -- var4 VARCHAR,
+    -- link45 VARCHAR,
+    -- var5 VARCHAR
 );
