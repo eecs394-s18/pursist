@@ -171,6 +171,7 @@ div.cardborder_untagged{
 .navbar-collapse {
   background-color: #dba1f4;
   color: #fff;
+  height: 1em;
 }
 
 .navbar-toggler {
