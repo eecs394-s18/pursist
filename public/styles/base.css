@@ -1,3 +1,13 @@
+a.nav-link{
+  font: 14px "Lato", Helvetica, Arial, sans-serif;
+  font-size: 25px;
+}
+
+
+/*a.nav-link:hover{
+  color: pink;
+}*/
+
 body {
   padding: 50px;
   padding-top: 80px;
@@ -38,6 +48,14 @@ p{
     width: 100%;
     height: 10px;
 }
+
+
+/*a.nav-link:hover{
+
+}
+*/
+
+
 
 #comment{
   text-align:center;
@@ -132,7 +150,7 @@ div.cardborder_untagged{
 .navbar-nav > li > a:hover, .navbar-nav >li > a:focus {
   background-color: #dba1f4;
   color: #fff;
-  border-radius: 5px !important; 
+  border-radius: 5px !important;
 }
 
 .nav-link {
