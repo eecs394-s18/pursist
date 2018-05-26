@@ -12,10 +12,13 @@ block content
             else
                 h1 Cards to tag:
                 each card in data
+                    .col-md-3
 
                     //-  CARDS THAT HAVENT BEEN ASSIGNED
-                    if !card.var1 && !card.link12 && !card.var2 && !card.link23 && !card.var3
-                        .column_inner
+                    //- if !card.var1 && !card.link12 && !card.var2 && !card.link23 && !card.var3
+                    //-     .column_inner
+                    if !(card.var1 && card.link12 && card.var2 && card.link23 && card.var3)
+                            //- .column_inner
                             div.cardborder_untagged
                                 p
                                     b Goal:
@@ -132,6 +135,7 @@ block content
             else
                 h1 Already tagged cards:
                 each card in data
+
                     if card.var1 && card.link12 && card.var2 && card.link23 && card.var3
                             div.cardborder_tagged
                                 p
@@ -166,14 +170,14 @@ block content
                                     b Variable 1:
                                     |  #{card.var1}
                                 p
-                                    b Link 1-2:
+                                    //- b Link 1-2:
                                     |  #{card.link12}
 
                                 p
                                     b Variable 2:
                                     |  #{card.var2}
                                 p
-                                    b Link 2-3:
+                                    //- b Link 2-3:
                                     |  #{card.link23}
 
                                 p
