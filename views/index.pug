@@ -1,16 +1,14 @@
 extends includes/layout
 
 block content
-    .container.text-center
-        a(href='newcard')
-            button.nav(type='button') New Card
-        a(href='organizer')
-            button.nav(type='button') Organizer
-        a(href='organizer2')
-            button.nav(type='button') Organizer2
-        a(href='diagrams')
-            button.nav(type='button') Diagrams
-    
+    //- .container.text-center
+    //-     a(href='newcard')
+    //-         button.nav(type='button') New Card
+    //-     a(href='organizer')
+    //-         button.nav(type='button') Organizer
+    //-     a(href='diagrams')
+    //-         button.nav(type='button') Diagrams
+
     br
     h2.text-center All Problem Statement Cards
     .row.text-center.work-pad
@@ -47,3 +45,21 @@ block content
                         p
                             b Created By:
                             |  #{card.email}
+
+                        p
+                            b Variable 1:
+                            |  #{card.var1}
+                        p
+                            //- b Link 1-2:
+                            |  #{card.link12}
+
+                        p
+                            b Variable 2:
+                            |  #{card.var2}
+                        p
+                            //- b Link 2-3:
+                            |  #{card.link23}
+
+                        p
+                            b Variable 3:
+                            |  #{card.var3}

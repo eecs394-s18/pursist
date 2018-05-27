@@ -2,16 +2,20 @@ mixin nav-mix(user)
     header
         nav.navbar.navbar-expand-md.navbar-default.fixed-top
             .navbar-header
-                a.navbar-brand(href='/') pursist
+                //- a.navbar-brand(href='/') pursist
             button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarCollapse', aria-controls='navbarCollapse', aria-expanded='false', aria-label='Toggle navigation')
                 i.feather-nav(data-feather='menu')
             #navbarCollapse.collapse.navbar-collapse
                 ul.navbar-nav.mr-auto
                     li.nav-item
-                        a.nav-link(href='/') Home 
+                        a.nav-link(href='/') PursistHome
+                    li.nav-item
+                        a.nav-link(href='/newcard') New Card
+                    li.nav-item
+                        a.nav-link(href='/organizer') Organizer View
                     li.nav-item
                         a.nav-link(href='/diagrams') Diagrams
-                        
+
                 ul.navbar-nav.ml-auto
                     li.nav-item
                         button.btn.feather-btn(type='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')

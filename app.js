@@ -85,7 +85,6 @@ queries.dbExists((exists) => {
 */
 var indexRouter = require('./routes/index');
 var organizerRouter = require('./routes/organizer');
-var organizer2Router = require('./routes/organizer2');
 var newCardRouter = require('./routes/newcard');
 var signinRouter = require('./routes/signin');
 var signoutRouter = require('./routes/logout');
@@ -95,7 +94,6 @@ var organizerDeleteRouter = require('./routes/organizerdelete');
 
 app.use('/', indexRouter);
 app.use('/organizer', organizerRouter);
-app.use('/organizer2', organizer2Router);
 app.use('/organizerdelete', organizerDeleteRouter);
 app.use('/newcard', newCardRouter);
 app.use('/signin', signinRouter);
