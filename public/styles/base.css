@@ -102,12 +102,14 @@ div.cardborder_home{
     border: 2px solid #40e88e;
     padding: 20px;
     box-shadow: 4px 9px #40e88e;
+    margin-bottom: 30px;
 }
 div.cardborder_home_t{
    border-radius: 10px;
     border: 2px solid #e84c40;
     padding: 20px;
     box-shadow: 4px 9px #e84c40;
+    margin-bottom: 30px;
 }
 
 /*two column action*/

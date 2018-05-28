@@ -48,15 +48,15 @@ block content
                                     |  #{card.email}
 
                                 br
-                                form(method='POST', action='/organizer')
+                                form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
                                     p
-                                    input(type='text' id="r1" name='var1' placeholder='causal variable 1')
+                                    input(class=card.id type='text' id="r1" name='var1' placeholder='causal variable 1')
 
                                     p
 
                                     label(for='link12choice1')
                                         span.linkbuttons.plusbutton
-                                          input#link12choice1(type='radio' name='link12' value='+')
+                                          input#link12choice1(class=card.id type='radio' name='link12' value='+')
                                           |
                                           b +
 
@@ -64,21 +64,21 @@ block content
 
                                     label(for='link12choice2')
                                         span.linkbuttons.minusbutton
-                                          input#link12choice2(type='radio' name='link12' value='-')
+                                          input#link12choice2(class=card.id type='radio' name='link12' value='-')
                                           |
                                           b --
 
 
 
                                     p
-                                    input(type='text' id="r1" name='var2' placeholder='causal variable 2')
+                                    input(class=card.id type='text' id="r1" name='var2' placeholder='causal variable 2')
 
                                     p
 
 
                                     label(for='link23choice1')
                                         span.linkbuttons.plusbutton
-                                          input#link23choice1(type='radio' name='link23' value='+')
+                                          input#link23choice1(class=card.id type='radio' name='link23' value='+')
                                           |
                                           b +
 
@@ -86,13 +86,13 @@ block content
 
                                     label(for='link23choice2')
                                         span.linkbuttons.minusbutton
-                                          input#link23choice2(type='radio' name='link23' value='-')
+                                          input#link23choice2(class=card.id type='radio' name='link23' value='-')
                                           |
                                           b --
 
 
                                     p
-                                    input(type='text' id="r1" name='var3' placeholder='causal variable 3')
+                                    input(class=card.id type='text' id="r1" name='var3' placeholder='causal variable 3')
 
 
                                     //- p
@@ -122,10 +122,11 @@ block content
                                     br
                                     br
                                     //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
-                                    input(type='submit', name=card.id, value='submit', onclick='return checkform()')
+                                    input(type='submit', name=card.id, value='submit')
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
+                                button(onclick='return checkform(' +card.id+')') test
 
         // ALREADY TAGGED CARDS
         .column_big_nobar
@@ -201,4 +202,17 @@ block content
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
+                                    
+    script(type='text/javascript').
+        function checkForm(id) {
+            var elements = document.getElementsByClassName(id);
+            for (i = 0; i < elements.length; i++) {
+                console.log(elements[i].name);
+                if (elements[i].value == ""){
+                    alert("Fill in the variables!");
+                    return false;
+                }
+            }
+        }
+      
     
