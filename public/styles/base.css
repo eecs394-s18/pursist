@@ -23,6 +23,15 @@ a {
     font-size: 50px;
 }
 
+.plusbutton{
+    float: left;
+    margin-right:15px;-
+}
+
+.minusbutton{
+    float: left;
+}
+
 p{
 	font-size: 15px;
 	color: #09172d;

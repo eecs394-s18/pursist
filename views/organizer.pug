@@ -13,7 +13,6 @@ block content
                 h1 Cards to tag:
                 each card in data
                     .col-md-3
-
                     //-  CARDS THAT HAVENT BEEN ASSIGNED
                     //- if !card.var1 && !card.link12 && !card.var2 && !card.link23 && !card.var3
                     //-     .column_inner
@@ -56,15 +55,15 @@ block content
                                     p
 
                                     label(for='link12choice1')
-                                        span.linkbuttons
+                                        span.linkbuttons.plusbutton
                                           input#link12choice1(type='radio' name='link12' value='+')
                                           |
                                           b +
 
-                                    br
+                                    
 
                                     label(for='link12choice2')
-                                        span.linkbuttons
+                                        span.linkbuttons.minusbutton
                                           input#link12choice2(type='radio' name='link12' value='-')
                                           |
                                           b --
@@ -78,15 +77,15 @@ block content
 
 
                                     label(for='link23choice1')
-                                        span.linkbuttons
+                                        span.linkbuttons.plusbutton
                                           input#link23choice1(type='radio' name='link23' value='+')
                                           |
                                           b +
 
-                                    br
+                                    
 
                                     label(for='link23choice2')
-                                        span.linkbuttons
+                                        span.linkbuttons.minusbutton
                                           input#link23choice2(type='radio' name='link23' value='-')
                                           |
                                           b --
@@ -123,7 +122,7 @@ block content
                                     br
                                     br
                                     //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
-                                    input(type='submit', name=card.id, value='submit')
+                                    input(type='submit', name=card.id, value='submit', onclick='return checkform()')
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
@@ -202,3 +201,4 @@ block content
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
+    
