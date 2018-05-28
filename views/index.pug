@@ -16,50 +16,83 @@ block content
             h3 There are no cards in the database yet.
         else
             each card in data
-                .col-md-3
-                    div.cardborder_untagged
-                        p
-                            b Goal:
-                            |  #{card.goal}
-                        p
-                            b Need:
-                            |  #{card.need}
-                        p
-                            b Current Solution:
-                            |  #{card.current_solution}
-                        p
-                            b Problem:
-                            |  #{card.problem}
+                if card.var1 && card.link12 && card.var2 && card.link23 && card.var3
+                    .col-md-3
+                        div.cardborder_home
+                            p
+                                b Goal:
+                                |  #{card.goal}
+                            p
+                                b Need:
+                                |  #{card.need}
+                            p
+                                b Current Solution:
+                                |  #{card.current_solution}
+                            p
+                                b Problem:
+                                |  #{card.problem}
 
-                        p
-                            b Solution Ideas:
-                            |  #{card.solution_ideas}
+                            p
+                                b Solution Ideas:
+                                |  #{card.solution_ideas}
 
-                        p
-                            b Current Benefits:
-                            |  #{card.current_benefits}
+                            p
+                                b Current Benefits:
+                                |  #{card.current_benefits}
 
-                        p
-                            b Comments:
-                            |  #{card.comment}
-                        p
-                            b Created By:
-                            |  #{card.email}
+                            p
+                                b Comments:
+                                |  #{card.comment}
+                            p
+                                b Created By:
+                                |  #{card.email}
 
-                        p
-                            b Variable 1:
-                            |  #{card.var1}
-                        p
-                            //- b Link 1-2:
-                            |  #{card.link12}
+                            p
+                                b Variable 1:
+                                |  #{card.var1}
+                            p
+                                //- b Link 1-2:
+                                |  #{card.link12}
 
-                        p
-                            b Variable 2:
-                            |  #{card.var2}
-                        p
-                            //- b Link 2-3:
-                            |  #{card.link23}
+                            p
+                                b Variable 2:
+                                |  #{card.var2}
+                            p
+                                //- b Link 2-3:
+                                |  #{card.link23}
 
-                        p
-                            b Variable 3:
-                            |  #{card.var3}
+                            p
+                                b Variable 3:
+                                |  #{card.var3}
+                
+                                
+                if !(card.var1 && card.link12 && card.var2 && card.link23 && card.var3)
+                    .col-md-3
+                        div.cardborder_home_t
+                            p
+                                b Goal:
+                                |  #{card.goal}
+                            p
+                                b Need:
+                                |  #{card.need}
+                            p
+                                b Current Solution:
+                                |  #{card.current_solution}
+                            p
+                                b Problem:
+                                |  #{card.problem}
+
+                            p
+                                b Solution Ideas:
+                                |  #{card.solution_ideas}
+
+                            p
+                                b Current Benefits:
+                                |  #{card.current_benefits}
+
+                            p
+                                b Comments:
+                                |  #{card.comment}
+                            p
+                                b Created By:
+                                |  #{card.email}
