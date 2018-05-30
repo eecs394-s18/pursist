@@ -60,8 +60,7 @@ block content
                                 p
 
 
-
-
+                                //this part is really ugly and hacky but basically 3 different divs with 3,4,5 causal variables
                                 .form-div1
                                     b How many variables do you want to use?
                                     br
@@ -79,7 +78,7 @@ block content
                                     b Displaying 4-variable causal chain:
                                 .form-div5
                                     br
-                                    b Displaying 4-variable causal chain:
+                                    b Displaying 5-variable causal chain:
 
                                 .form-div5
                                     p
@@ -296,7 +295,7 @@ block content
                                         input(type='submit', name=card.id, value='submit')
 
 
-
+                                //embedded JS to toggle the fields
                                 script.
                                   $('.form-div3').show();
                                   $('.form-div4, .form-div5').hide();
@@ -306,32 +305,8 @@ block content
                                     $('.form-div3').toggle(selected == "3 Causal Variables");
                                     $('.form-div4').toggle(selected == "4 Causal Variables");
                                     $('.form-div5').toggle(selected == "5 Causal Variables");
-                                    //- if(selected == "3 Causal Variables"){
-                                    //-     console.log('3')
-                                    //-     $('.form-div4, .form-div5').hide();
-                                    //-     $('.form-div3').show();
-                                    //- }
-
-                                    //- else if(selected == "4 Causal Variables"){
-                                    //-     console.log('4')
-                                    //-     $('.form-div5').hide();
-                                    //-     $('.form-div3, .form-div4').show();
-                                    //- }
-
-                                    //- else{
-                                    //-     console.log('5')
-                                    //-     //- $('.form-div5').hide();
-                                    //-     $('.form-div3, .form-div4, .form-div5').show();
-
-                                    //- };
-
-                                    //- $('form-div3, .form-div4').toggle(selected == "4 Causal Variables");
-                                    //- $('.form-div3, .form-div4, .form-div5').toggle(selected == "5 Causal Variables");
 
                                   });
-
-
-
 
 
                                 br
@@ -376,6 +351,7 @@ block content
                                     b Created By:
                                     |  #{card.email}
 
+                                //- if (card.var5)
                                 p
                                     b Variable 5:
                                     |  #{card.var5}
@@ -383,13 +359,15 @@ block content
                                     b Link 4-5:
                                     |  #{card.link45}
 
+                            //- if(card.var4)
+
                                 p
                                     b Variable 4:
                                     |  #{card.var4}
                                 p
                                     b Link 3-4:
                                     |  #{card.link34}
-
+                            //- if (card.var3)
                                 p
                                     b Variable 3:
                                     |  #{card.var3}
@@ -413,30 +391,30 @@ block content
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
 
-    script(type='text/javascript').
-        function checkForm(id) {
-            var elements = document.getElementsByClassName(id);
-            var counter1 = 0;
-            var counter2 = 0;
-            for (i = 0; i < elements.length; i++) {
-                console.log(elements[i].name);
-                if (elements[i].value == ""){
-                    alert("Fill in the variables!");
-                    return false;
-                }
-                if (elements[i].name == "link12" && !elements[i].checked) {
-                    counter1 = counter1 + 1;
-                    console.log("one: "+counter1);
-                }
-                if (elements[i].name == "link23" && !elements[i].checked) {
-                    counter2 = counter2 + 1;
-                    console.log("two: "+counter2);
-                }
-                if (counter1 == 2 || counter2 == 2) {
-                    alert("Fill in the causal links!");
-                    return false;
-                }
-            }
-        }
+    //- script(type='text/javascript').
+    //-     function checkForm(id) {
+    //-         var elements = document.getElementsByClassName(id);
+    //-         var counter1 = 0;
+    //-         var counter2 = 0;
+    //-         for (i = 0; i < elements.length; i++) {
+    //-             console.log(elements[i].name);
+    //-             if (elements[i].value == ""){
+    //-                 alert("Fill in the variables!");
+    //-                 return false;
+    //-             }
+    //-             if (elements[i].name == "link12" && !elements[i].checked) {
+    //-                 counter1 = counter1 + 1;
+    //-                 console.log("one: "+counter1);
+    //-             }
+    //-             if (elements[i].name == "link23" && !elements[i].checked) {
+    //-                 counter2 = counter2 + 1;
+    //-                 console.log("two: "+counter2);
+    //-             }
+    //-             if (counter1 == 2 || counter2 == 2) {
+    //-                 alert("Fill in the causal links!");
+    //-                 return false;
+    //-             }
+    //-         }
+    //-     }
 
 
