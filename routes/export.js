@@ -33,7 +33,7 @@ router.post('/', function(req, res, next) {
                             }
                             else
                             {
-                                fs.unlink('_temp/' + fileName, (err) =>
+                                fs.unlink('./_temp/' + fileName, (err) =>
                                 {
                                     if (err)
                                     {
