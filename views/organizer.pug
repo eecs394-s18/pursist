@@ -1,13 +1,15 @@
 extends includes/layout
 
 block content
+    br
+    h2.text-center Your cards:
     if (!isEmpty)
         .container
-            br
+
             form.text-center(action='/export', method='post' style="margin-top: 20px")
                 button.btn.btn-primary.mb-2(type='submit') Export to CSV
 
-    h2.text-center Your cards:
+
     hr
     //- right has cards that need to be assigned, left has cards already assigned
     .row.text-center.work-pad
@@ -63,7 +65,7 @@ block content
                                           |
                                           b +
 
-                                    
+
 
                                     label(for='link12choice2')
                                         span.linkbuttons.minusbutton
@@ -85,7 +87,7 @@ block content
                                           |
                                           b +
 
-                                    
+
 
                                     label(for='link23choice2')
                                         span.linkbuttons.minusbutton
@@ -204,7 +206,7 @@ block content
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
-                                    
+
     script(type='text/javascript').
         function checkForm(id) {
             var elements = document.getElementsByClassName(id);
@@ -230,5 +232,5 @@ block content
                 }
             }
         }
-      
-    
+
+
