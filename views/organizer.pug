@@ -52,9 +52,26 @@ block content
                                     b Created By:
                                     |  #{card.email}
 
-                                br
-                                form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
-                                    p
+                                p
+                                    b How many causal variables do you want to use?
+                                    br
+                                    br
+
+                                p
+
+
+
+
+                                .form-div1
+                                    b How many variables do you want to use?
+                                    br
+                                    select#numvars
+                                        option(value='option1') 3 Causal Variables
+                                        option(value='option2') 4 Causal Variables
+                                        option(value='option3') 5 Casual Variables
+
+
+                                .form-div5
                                     input(class=card.id type='text' id="r1" name='var5' placeholder='causal variable 5')
 
                                     p
@@ -73,8 +90,7 @@ block content
                                           |
                                           b --
 
-
-
+                                .form-div4
                                     p
                                     input(class=card.id type='text' id="r1" name='var4' placeholder='causal variable 4')
 
@@ -95,55 +111,96 @@ block content
                                           |
                                           b --
 
-
-                                    p
-                                    input(class=card.id type='text' id="r1" name='var3' placeholder='causal variable 3')
-
-
-                                    p
-
-
-                                    label(for='link23choice1')
-                                        span.linkbuttons.plusbutton
-                                          input#link23choice1(class=card.id type='radio' name='link23' value='+')
-                                          |
-                                          b +
-
-
-
-                                    label(for='link23choice2')
-                                        span.linkbuttons.minusbutton
-                                          input#link23choice2(class=card.id type='radio' name='link23' value='-')
-                                          |
-                                          b --
-
-
-                                    p
-                                    input(class=card.id type='text' id="r1" name='var2' placeholder='causal variable 2')
-
-                                    p
-                                    label(for='link12choice1')
-                                        span.linkbuttons.plusbutton
-                                          input#link12choice1(class=card.id type='radio' name='link12' value='+')
-                                          |
-                                          b +
-
-
-
-                                    label(for='link12choice2')
-                                        span.linkbuttons.minusbutton
-                                          input#link12choice2(class=card.id type='radio' name='link12' value='-')
-                                          |
-                                          b --
-
-
-                                    p
-                                    input(class=card.id type='text' id="r1" name='var1' placeholder='causal variable 1')
-
+                                .form-div3
                                     br
-                                    br
-                                    //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
-                                    input(type='submit', name=card.id, value='submit')
+                                    form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var3' placeholder='causal variable 3')
+
+
+                                        p
+
+
+                                        label(for='link23choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link23choice1(class=card.id type='radio' name='link23' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link23choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link23choice2(class=card.id type='radio' name='link23' value='-')
+                                              |
+                                              b --
+
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var2' placeholder='causal variable 2')
+
+                                        p
+                                        label(for='link12choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link12choice1(class=card.id type='radio' name='link12' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link12choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link12choice2(class=card.id type='radio' name='link12' value='-')
+                                              |
+                                              b --
+
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var1' placeholder='causal variable 1')
+
+                                        br
+                                        br
+                                        //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
+                                        input(type='submit', name=card.id, value='submit')
+
+
+
+                                script.
+                                  $('.form-div3').show();
+                                  $('.form-div4, .form-div5').hide();
+                                  $('#numvars').change(function () {
+                                    var selected = $('#numvars option:selected').text();
+                                    console.log(selected);
+                                    //- $('.form-div3').toggle(selected == "3 Causal Variables");
+                                    if(selected == "3 Causal Variables"){
+                                        console.log('3')
+                                        $('.form-div4, .form-div5').hide();
+                                        $('.form-div3').show();
+                                    }
+
+                                    else if(selected == "4 Causal Variables"){
+                                        console.log('4')
+                                        $('.form-div5').hide();
+                                        $('.form-div3, .form-div4').show();
+                                    }
+
+                                    else{
+                                        console.log('5')
+                                        //- $('.form-div5').hide();
+                                        $('.form-div3, .form-div4, .form-div5').show();
+
+                                    };
+
+                                    $('form-div3, .form-div4').toggle(selected == "4 Causal Variables");
+                                    $('.form-div3, .form-div4, .form-div5').toggle(selected == "5 Causal Variables");
+
+                                  });
+
+
+
+
+
                                 br
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
@@ -187,36 +244,36 @@ block content
                                     |  #{card.email}
 
                                 p
-                                    b Variable 1:
-                                    |  #{card.var1}
+                                    b Variable 5:
+                                    |  #{card.var5}
                                 p
-                                    //- b Link 1-2:
-                                    |  #{card.link12}
+                                    b Link 4-5:
+                                    |  #{card.link45}
+
+                                p
+                                    b Variable 4:
+                                    |  #{card.var4}
+                                p
+                                    b Link 3-4:
+                                    |  #{card.link34}
+
+                                p
+                                    b Variable 3:
+                                    |  #{card.var3}
+                                p
+                                    b Link 2-3:
+                                    |  #{card.link23}
 
                                 p
                                     b Variable 2:
                                     |  #{card.var2}
                                 p
-                                    //- b Link 2-3:
-                                    |  #{card.link23}
+                                    b Link 1-2:
+                                    |  #{card.link12}
 
                                 p
-                                    b Variable 3:
-                                    |  #{card.var3}
-                                //- p
-                                //-     b Link 3-4:
-                                //-     |  #{card.link34}
-
-                                //- p
-                                //-     b Variable 4:
-                                //-     |  #{card.var4}
-                                //- p
-                                //-     b Link 4-5:
-                                //-     |  #{card.link45}
-
-                                //- p
-                                //-     b Variable 5:
-                                //-     |  #{card.var5}
+                                    b Variable 1:
+                                    |  #{card.var1}
 
 
                                 br
