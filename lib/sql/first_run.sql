@@ -21,9 +21,9 @@ CREATE TABLE {SCHEMA}.cards(
     link12 VARCHAR,
     var2 VARCHAR,
     link23 VARCHAR,
-    var3 VARCHAR
-    -- link34 VARCHAR,
-    -- var4 VARCHAR,
-    -- link45 VARCHAR,
-    -- var5 VARCHAR
+    var3 VARCHAR,
+    link34 VARCHAR,
+    var4 VARCHAR,
+    link45 VARCHAR,
+    var5 VARCHAR
 );

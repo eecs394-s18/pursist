@@ -31,7 +31,11 @@ router.post('/', function(req, res, next) {
         link12: null,
         var2: null,
         link23: null,
-        var3: null
+        var3: null,
+        link34: null,
+        var4: null,
+        link45: null,
+        var5: null
     };
     queries.writeCard(cardData, (response) => {
         if (!response)

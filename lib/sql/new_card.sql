@@ -11,7 +11,11 @@ INSERT INTO {SCHEMA}.cards(
     link12,
     var2,
     link23,
-    var3
+    var3,
+    link34,
+    var4,
+    link45,
+    var5
 )
 VALUES (
     $1,
@@ -26,5 +30,9 @@ VALUES (
     $10,
     $11,
     $12,
-    $13
+    $13,
+    $14,
+    $15,
+    $16,
+    $17
 )
