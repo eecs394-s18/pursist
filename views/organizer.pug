@@ -1,8 +1,8 @@
 extends includes/layout
 
 block content
-    h2.text-center Your cards:
-    hr
+    //- h2.text-center Your cards:
+    //- hr
     //- .row.text-center.work-pad
     //- right has cards that need to be assigned, left has cards already assigned
     .row.text-center.work-pad
@@ -10,7 +10,7 @@ block content
             if isEmpty
                 h3 There are no cards in the database yet.
             else
-                h1 Cards to tag:
+                h1 Cards to Tag:
                 each card in data
                     .col-md-3
                     //-  CARDS THAT HAVENT BEEN ASSIGNED
@@ -132,7 +132,7 @@ block content
             if isEmpty
                 h3 There are no cards in the database yet.
             else
-                h1 Already tagged cards:
+                h1 Tagged Cards:
                 each card in data
 
                     if card.var1 && card.link12 && card.var2 && card.link23 && card.var3
