@@ -65,15 +65,26 @@ block content
                                 .form-div1
                                     b How many variables do you want to use?
                                     br
+                                    br
                                     select#numvars
                                         option(value='option1') 3 Causal Variables
                                         option(value='option2') 4 Causal Variables
-                                        option(value='option3') 5 Casual Variables
+                                        option(value='option3') 5 Causal Variables
 
+                                .form-div3
+                                    br
+                                    b Displaying 3-variable causal chain:
+                                .form-div4
+                                    br
+                                    b Displaying 4-variable causal chain:
+                                .form-div5
+                                    br
+                                    b Displaying 4-variable causal chain:
 
                                 .form-div5
-                                    input(class=card.id type='text' id="r1" name='var5' placeholder='causal variable 5')
+                                    p
 
+                                    input(class=card.id type='text' id="r1" name='var5' placeholder='causal variable 5')
                                     p
 
                                     label(for='link45choice1')
@@ -89,6 +100,76 @@ block content
                                           input#link45choice2(class=card.id type='radio' name='link45' value='-')
                                           |
                                           b --
+                                    p
+                                    input(class=card.id type='text' id="r1" name='var4' placeholder='causal variable 4')
+
+                                    p
+
+
+                                    label(for='link34choice1')
+                                        span.linkbuttons.plusbutton
+                                          input#link34choice1(class=card.id type='radio' name='link34' value='+')
+                                          |
+                                          b +
+
+
+
+                                    label(for='link34choice2')
+                                        span.linkbuttons.minusbutton
+                                          input#link34choice2(class=card.id type='radio' name='link34' value='-')
+                                          |
+                                          b --
+                                    br
+                                    form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var3' placeholder='causal variable 3')
+
+
+                                        p
+
+
+                                        label(for='link23choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link23choice1(class=card.id type='radio' name='link23' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link23choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link23choice2(class=card.id type='radio' name='link23' value='-')
+                                              |
+                                              b --
+
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var2' placeholder='causal variable 2')
+
+                                        p
+                                        label(for='link12choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link12choice1(class=card.id type='radio' name='link12' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link12choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link12choice2(class=card.id type='radio' name='link12' value='-')
+                                              |
+                                              b --
+
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var1' placeholder='causal variable 1')
+
+                                        br
+                                        br
+                                        //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
+                                        input(type='submit', name=card.id, value='submit')
 
                                 .form-div4
                                     p
@@ -110,9 +191,59 @@ block content
                                           input#link34choice2(class=card.id type='radio' name='link34' value='-')
                                           |
                                           b --
+                                    br
+                                    form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var3' placeholder='causal variable 3')
+
+
+                                        p
+
+
+                                        label(for='link23choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link23choice1(class=card.id type='radio' name='link23' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link23choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link23choice2(class=card.id type='radio' name='link23' value='-')
+                                              |
+                                              b --
+
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var2' placeholder='causal variable 2')
+
+                                        p
+                                        label(for='link12choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link12choice1(class=card.id type='radio' name='link12' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link12choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link12choice2(class=card.id type='radio' name='link12' value='-')
+                                              |
+                                              b --
+
+
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var1' placeholder='causal variable 1')
+
+                                        br
+                                        br
+                                        //- IMPORTANT - name=card.id has to find the specific card to set that exact tag
+                                        input(type='submit', name=card.id, value='submit')
 
                                 .form-div3
-                                    br
                                     form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
 
                                         p
@@ -172,28 +303,30 @@ block content
                                   $('#numvars').change(function () {
                                     var selected = $('#numvars option:selected').text();
                                     console.log(selected);
-                                    //- $('.form-div3').toggle(selected == "3 Causal Variables");
-                                    if(selected == "3 Causal Variables"){
-                                        console.log('3')
-                                        $('.form-div4, .form-div5').hide();
-                                        $('.form-div3').show();
-                                    }
+                                    $('.form-div3').toggle(selected == "3 Causal Variables");
+                                    $('.form-div4').toggle(selected == "4 Causal Variables");
+                                    $('.form-div5').toggle(selected == "5 Causal Variables");
+                                    //- if(selected == "3 Causal Variables"){
+                                    //-     console.log('3')
+                                    //-     $('.form-div4, .form-div5').hide();
+                                    //-     $('.form-div3').show();
+                                    //- }
 
-                                    else if(selected == "4 Causal Variables"){
-                                        console.log('4')
-                                        $('.form-div5').hide();
-                                        $('.form-div3, .form-div4').show();
-                                    }
+                                    //- else if(selected == "4 Causal Variables"){
+                                    //-     console.log('4')
+                                    //-     $('.form-div5').hide();
+                                    //-     $('.form-div3, .form-div4').show();
+                                    //- }
 
-                                    else{
-                                        console.log('5')
-                                        //- $('.form-div5').hide();
-                                        $('.form-div3, .form-div4, .form-div5').show();
+                                    //- else{
+                                    //-     console.log('5')
+                                    //-     //- $('.form-div5').hide();
+                                    //-     $('.form-div3, .form-div4, .form-div5').show();
 
-                                    };
+                                    //- };
 
-                                    $('form-div3, .form-div4').toggle(selected == "4 Causal Variables");
-                                    $('.form-div3, .form-div4, .form-div5').toggle(selected == "5 Causal Variables");
+                                    //- $('form-div3, .form-div4').toggle(selected == "4 Causal Variables");
+                                    //- $('.form-div3, .form-div4, .form-div5').toggle(selected == "5 Causal Variables");
 
                                   });
 
