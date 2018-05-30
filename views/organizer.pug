@@ -1,9 +1,14 @@
 extends includes/layout
 
 block content
-    //- h2.text-center Your cards:
-    //- hr
-    //- .row.text-center.work-pad
+    if (!isEmpty)
+        .container
+            br
+            form.text-center(action='/export', method='post' style="margin-top: 20px")
+                button.btn.btn-primary.mb-2(type='submit') Export to CSV
+
+    h2.text-center Your cards:
+    hr
     //- right has cards that need to be assigned, left has cards already assigned
     .row.text-center.work-pad
         .column_big_bar
@@ -14,8 +19,6 @@ block content
                 each card in data
                     .col-md-3
                     //-  CARDS THAT HAVENT BEEN ASSIGNED
-                    //- if !card.var1 && !card.link12 && !card.var2 && !card.link23 && !card.var3
-                    //-     .column_inner
                     if !(card.var1 && card.link12 && card.var2 && card.link23 && card.var3)
                             //- .column_inner
                             div.cardborder_untagged
