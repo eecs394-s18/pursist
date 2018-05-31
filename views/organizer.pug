@@ -323,6 +323,7 @@ block content
 
                     if card.var1 && card.link12 && card.var2 && card.link23 && card.var3
                             div.cardborder_tagged
+
                                 p
                                     b Goal:
                                     |  #{card.goal}
@@ -354,29 +355,38 @@ block content
                                 p
                                     b Variable 5:
                                     |  #{card.var5}
+
                                 p
                                     b Link 4-5:
-                                    |  #{card.link45}
+                                    |  ( #{card.link45} )
 
                                 p
                                     b Variable 4:
                                     |  #{card.var4}
+
                                 p
-                                    b Link 3-4:
-                                    |  #{card.link34}
+                                    | ( #{card.link34} )
+
+
                                 p
                                     b Variable 3:
                                     |  #{card.var3}
+
+
                                 p
-                                    b Link 2-3:
-                                    |  #{card.link23}
+                                    //- b Link 2-3:
+                                    |  ( #{card.link23} )
+
 
                                 p
                                     b Variable 2:
                                     |  #{card.var2}
+
+
                                 p
-                                    b Link 1-2:
-                                    |  #{card.link12}
+                                    //- b Link 1-2:
+                                    |  ( #{card.link12} )
+
 
                                 p
                                     b Variable 1:
@@ -387,30 +397,5 @@ block content
                                 form(method='POST', action='/organizerdelete')
                                     input(type='submit', name=card.id, value='delete')
 
-    //- script(type='text/javascript').
-    //-     function checkForm(id) {
-    //-         var elements = document.getElementsByClassName(id);
-    //-         var counter1 = 0;
-    //-         var counter2 = 0;
-    //-         for (i = 0; i < elements.length; i++) {
-    //-             console.log(elements[i].name);
-    //-             if (elements[i].value == ""){
-    //-                 alert("Fill in the variables!");
-    //-                 return false;
-    //-             }
-    //-             if (elements[i].name == "link12" && !elements[i].checked) {
-    //-                 counter1 = counter1 + 1;
-    //-                 console.log("one: "+counter1);
-    //-             }
-    //-             if (elements[i].name == "link23" && !elements[i].checked) {
-    //-                 counter2 = counter2 + 1;
-    //-                 console.log("two: "+counter2);
-    //-             }
-    //-             if (counter1 == 2 || counter2 == 2) {
-    //-                 alert("Fill in the causal links!");
-    //-                 return false;
-    //-             }
-    //-         }
-    //-     }
 
 
