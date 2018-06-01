@@ -7,7 +7,7 @@ var json2csv = require('json2csv').parse;
 var moment = require('moment');
 var fs = require('fs');
 
-const fields = ['goal', 'need', 'current_solution', 'problem', 'solution_ideas', 'current_benefits', 'comment', 'email', 'var1', 'link12', 'var2', 'link23', 'var3'];
+const fields = ['goal', 'need', 'current_solution', 'problem', 'solution_ideas', 'current_benefits', 'comment', 'email', 'var1', 'link12', 'var2', 'link23', 'var3', 'link34', 'var4', 'link45', 'var5'];
 
 router.post('/', function(req, res, next) {
     var id = null;
