@@ -29,16 +29,16 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+    // console.log(req.body)
     var id = null;
     Object.keys(req.body).forEach((key) =>
     {
-        if (key != "var1" && key != "link12" && key != "var2" && key != "link23" && key != "var3")
+        if (key != "var1" && key != "link12" && key != "var2" && key != "link23" && key != "var3" && key != "link34" && key != "var4" && key != "link45" && key != "var5")
         {
             id = parseInt(key);
         }
     });
-
-    queries.updateCard([id, req.body.var1, req.body.link12, req.body.var2, req.body.link23, req.body.var3], (response) => {
+    queries.updateCard([id, req.body.var1, req.body.link12, req.body.var2, req.body.link23, req.body.var3, req.body.link34, req.body.var4, req.body.link45, req.body.var5], (response) => {
         if (!response){
             console.log("[Alert] Updating card failed.");
         }

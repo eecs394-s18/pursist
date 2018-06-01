@@ -25,7 +25,7 @@ router.post('/', function(req, res, next) {
                     fs.appendFile('_temp/' + fileName, csv, (err) =>
                     {
                         if (err) throw err;
-                        res.download('_temp/' + fileName, fileName, (err) =>
+                        res.download('./_temp/' + fileName, fileName, (err) =>
                         {
                             if (err)
                             {
