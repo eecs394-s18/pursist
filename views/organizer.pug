@@ -366,45 +366,50 @@ block content
                                     b Created By:
                                     |  #{card.email}
 
-                                p
-                                    b Variable 5:
-                                    |  #{card.var5}
+                                //- p
+                                //-     b ------------------------
+                                //- p
+                                //-     | var5
+                                //-     b   #{card.var5}
+
+                                //- p
+                                //-     link45
+                                //-     //- b Link 4-5:
+                                //-     |   #{card.link45}
+
+                                //- p
+                                //-     var4
+                                //-     //- b Variable 4:
+                                //-     |  #{card.var4}
+
+                                //- p
+                                //-     |   #{card.link34}
+
+                                //- p
+                                //-     //- b Variable 3:
+                                //-     |  #{card.var3}
+
+                                p #{card.var4}
+                                p #{card.var3}
 
                                 p
-                                    b Link 4-5:
-                                    |  ( #{card.link45} )
+                                img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
 
-                                p
-                                    b Variable 4:
-                                    |  #{card.var4}
-
-                                p
-                                    | ( #{card.link34} )
-
-
-
-                                p
-                                    //- b Variable 3:
-                                    |  #{card.var3}
-
-                                p
-                                  img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
                                 p
                                     //- b Link 2-3:
-                                    |  ( #{card.link23} )
-
-                                //- div.left
-
+                                    |
+                                    b   #{card.link23}
 
                                 p
                                     //- b Variable 2:
                                     |  #{card.var2}
 
                                 p
-                                  img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
+                                img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
                                 p
                                     //- b Link 1-2:
-                                    |  ( #{card.link12} )
+                                    |
+                                    b #{card.link12}
 
 
                                 p
