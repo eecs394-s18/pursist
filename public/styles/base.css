@@ -63,7 +63,9 @@ p{
 
 }
 */
-
+div.left{
+  text-align: left;
+}
 
 
 #comment{
