@@ -82,47 +82,47 @@ block content
                                     b Displaying 5-variable causal chain:
 
                                 .form-div5
-                                    p
-
-                                    input(class=card.id type='text' id="r1" name='var5' placeholder='causal variable 5')
-                                    p
-                                    img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
-
-                                    label(for='link45choice1')
-                                        span.linkbuttons.plusbutton
-                                          input#link45choice1(class=card.id type='radio' name='link45' value='+')
-                                          |
-                                          b +
-
-
-
-                                    label(for='link45choice2')
-                                        span.linkbuttons.minusbutton
-                                          input#link45choice2(class=card.id type='radio' name='link45' value='-')
-                                          |
-                                          b --
-                                    p
-                                    input(class=card.id type='text' id="r1" name='var4' placeholder='causal variable 4')
-
-                                    p
-                                    img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
-
-
-                                    label(for='link34choice1')
-                                        span.linkbuttons.plusbutton
-                                          input#link34choice1(class=card.id type='radio' name='link34' value='+')
-                                          |
-                                          b +
-
-
-
-                                    label(for='link34choice2')
-                                        span.linkbuttons.minusbutton
-                                          input#link34choice2(class=card.id type='radio' name='link34' value='-')
-                                          |
-                                          b --
-                                    br
                                     form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
+                                        p
+
+                                        input(class=card.id type='text' id="r1" name='var5' placeholder='causal variable 5')
+                                        p
+                                        img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
+
+                                        label(for='link45choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link45choice1(class=card.id type='radio' name='link45' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link45choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link45choice2(class=card.id type='radio' name='link45' value='-')
+                                              |
+                                              b --
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var4' placeholder='causal variable 4')
+
+                                        p
+                                        img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
+
+
+                                        label(for='link34choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link34choice1(class=card.id type='radio' name='link34' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link34choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link34choice2(class=card.id type='radio' name='link34' value='-')
+                                              |
+                                              b --
+                                        br
 
                                         p
                                         input(class=card.id type='text' id="r1" name='var3' placeholder='causal variable 3')
@@ -176,28 +176,29 @@ block content
                                         input(type='submit', name=card.id, value='submit')
 
                                 .form-div4
-                                    p
-                                    input(class=card.id type='text' id="r1" name='var4' placeholder='causal variable 4')
-
-                                    p
-                                    img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
-
-
-                                    label(for='link34choice1')
-                                        span.linkbuttons.plusbutton
-                                          input#link34choice1(class=card.id type='radio' name='link34' value='+')
-                                          |
-                                          b +
-
-
-
-                                    label(for='link34choice2')
-                                        span.linkbuttons.minusbutton
-                                          input#link34choice2(class=card.id type='radio' name='link34' value='-')
-                                          |
-                                          b --
-                                    br
                                     form(method='POST', action='/organizer', onsubmit='return checkForm(' +card.id+')')
+                                        p
+                                        input(class=card.id type='text' id="r1" name='var4' placeholder='causal variable 4')
+
+                                        p
+                                        img(src='/img/long-arrow-right.png' style="width:20%;height:20%")
+
+
+                                        label(for='link34choice1')
+                                            span.linkbuttons.plusbutton
+                                              input#link34choice1(class=card.id type='radio' name='link34' value='+')
+                                              |
+                                              b +
+
+
+
+                                        label(for='link34choice2')
+                                            span.linkbuttons.minusbutton
+                                              input#link34choice2(class=card.id type='radio' name='link34' value='-')
+                                              |
+                                              b --
+                                        br
+
 
                                         p
                                         input(class=card.id type='text' id="r1" name='var3' placeholder='causal variable 3')
@@ -369,16 +370,13 @@ block content
                                 p
                                     b ------------------------
                                 p
-                                    | var5
                                     b   #{card.var5}
 
                                 p
-                                    | link45
                                     //- b Link 4-5:
                                     |   #{card.link45}
 
                                 p
-                                    | var4
                                     //- b Variable 4:
                                     |  #{card.var4}
 
