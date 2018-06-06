@@ -31,12 +31,12 @@ router.post('/', function(req, res, next) {
                 if (response == "usernameUsed")
                 {
                     // no session
-                    res.redirect('/spencer?usernameUsed=true');
+                    res.redirect('/signup?usernameUsed=true');
                 }
                 else
                 {
                     // no session
-                    res.redirect('/spencer?generalError=true');
+                    res.redirect('/signup?generalError=true');
                 }
             }
             else
