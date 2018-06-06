@@ -1,0 +1,3 @@
+SELECT *
+FROM {SCHEMA}.cards
+WHERE id=$1;

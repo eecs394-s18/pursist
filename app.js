@@ -92,6 +92,7 @@ var newuserRouter = require('./routes/newuser');
 var diagramsRouter = require('./routes/diagrams');
 var organizerDeleteRouter = require('./routes/organizerdelete');
 var exportRouter = require('./routes/export');
+var editRouter = require('./routes/edit');
 
 app.use('/', indexRouter);
 app.use('/organizer', organizerRouter);
@@ -102,6 +103,7 @@ app.use('/logout', signoutRouter);
 app.use('/newuser', newuserRouter);
 app.use('/diagrams', diagramsRouter);
 app.use('/export', exportRouter);
+app.use('/edit', editRouter);
 
 app._router.stack.forEach(function(r){
   if (r.route && r.route.path){
