@@ -99,7 +99,7 @@ app.use('/organizerdelete', organizerDeleteRouter);
 app.use('/newcard', newCardRouter);
 app.use('/signin', signinRouter);
 app.use('/logout', signoutRouter);
-app.use('/newuser', newuserRouter);
+app.use('/spencer', newuserRouter);
 app.use('/export', exportRouter);
 app.use('/edit', editRouter);
 

@@ -31,12 +31,12 @@ router.post('/', function(req, res, next) {
                 if (response == "usernameUsed")
                 {
                     // no session
-                    res.redirect('/newuser?usernameUsed=true');
+                    res.redirect('/spencer?usernameUsed=true');
                 }
                 else
                 {
                     // no session
-                    res.redirect('/newuser?generalError=true');
+                    res.redirect('/spencer?generalError=true');
                 }
             }
             else
@@ -48,11 +48,11 @@ router.post('/', function(req, res, next) {
     }
     else if (req.body.password.length < 6)
     {
-        res.redirect('/newuser?shortPassword=true');
+        res.redirect('/spencer?shortPassword=true');
     }
     else
     {
-        res.redirect('/newuser?passwordMismatch=true');
+        res.redirect('/spencer?passwordMismatch=true');
     }
 });
 
