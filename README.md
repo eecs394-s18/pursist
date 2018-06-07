@@ -19,7 +19,9 @@ Table of Contents
       * [Set up local database](#set-up-local-database)
       * [Set up session handling](#set-up-session-handling)
    * [Running the app locally](#running-the-app-locally)
-   * [Deploying to live app](#)
+   * [Deploying to live app](#deploying-to-live-app)
+   * [Current platform and app constraints](#current-platform-and-app-constraints)
+   * [Further resources](#further-resources)
 <!--te-->
 
 ## Getting Started
@@ -44,6 +46,9 @@ Note: This guide is for MacOSX only.
 2) Open the Postgres app and create a new server. Make sure to use port 5432. The name doesn't really matter. Make sure the directory you choose is empty, and then initialize the server.
 
 For more help/info on setting up Postgres, see [this link](https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb#1-postico-httpseggerappsatpostico). **This includes a ton of information - way more than you need here. Follow 1 and 2 for the Postgres stuff, then skip to the second section titled "2. pgAdmin" for help on how to set this up. When you run the app (see "Running the app locally", the first run will actually initialize the database in the format we want, so you don't have to worry about the other stuff in this guide.**
+
+Another useful tip for working with the DB locally is that if you ever want to delete the local database because you changed the structure of it, you can "drop" the pursist "cascade" from the pgAdmin window.
+
 ### Set up session handling 
 
 1) Navigate to the pusist folder in terminal
@@ -75,7 +80,7 @@ npm start
 Direct your browser to localhost:3000 to use the app locally!
 
 ## Deploying to live app
-1) Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
+1) Install [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line), which will include creating a heroku app and a few other administrative tasks.
 
 2) Navigate into the app directory in Terminal
 
@@ -87,7 +92,10 @@ Direct your browser to localhost:3000 to use the app locally!
 
 6) Now you can access the app live on [Heroku](http://pursist.herokuapp.com/)! It might take a second to load.
 
-## Resources
+## Current platform and app constraints
+The app is available online (on any device where you can access Internet), but it is not optimized/made to look good on mobile at this time. Development has been done completely on MacOSX so far, however one could likely continue on PC (with different Postgres setup, etc.). At this time, we don't have actual diagram generation in the app, but you can export all of the problem statement cards to CSV.
+
+## Further resources
 - [Intense detailed guide on setting up Postgres and pgAdmin](https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb#1-postico-httpseggerappsatpostico)
 - [Express routing guide](https://expressjs.com/en/guide/routing.html)
 - [Pug quick start](https://pugjs.org/api/getting-started.html)
