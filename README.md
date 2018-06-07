@@ -1,7 +1,6 @@
 # PurSIST
 
-[PurSIST is currently hosted on Heroku!](http://pursist.herokuapp.com/)
-
+[PurSIST](http://pursist.herokuapp.com/) is currently hosted on Heroku!
 PurSIST is a web application tool designed to improve lab meeting productivity by providing an interface for meeting attendees to submit problem statements such that the meeting organizers can then tag the cards with causal variables, leading to a better visualization and organization system for lab issues.
 
 PurSIST was designed during Spring 2018 for EECS 394, as the Purple Team client project for Spencer Carlson (Delta Lab). The developers are no longer regularly active on this project but are happy to answer questions in the form of email (see Julia's email below) or Github issues.
