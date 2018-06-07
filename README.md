@@ -9,6 +9,8 @@ PurSIST was designed during Spring 2018 for EECS 394, as the Purple Team client 
 Developer Team:
 Julia Wilkins (juliawilkins2018@u.northwestern.edu), Ben Scharf, Victoria Cabales, David Jung, Ilham Jardin, Daanish Khazi.
 
+![Alt Text](https://media.giphy.com/media/1ynEvsZBPIljlqxhEa/giphy.gif)
+
 Table of Contents
 =================
 <!--ts-->
