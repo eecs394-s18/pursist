@@ -6,7 +6,7 @@ PurSIST is a web application tool designed to improve lab meeting productivity b
 PurSIST was designed during Spring 2018 for EECS 394, as the Purple Team client project for Spencer Carlson (Delta Lab). The developers are no longer regularly active on this project but are happy to answer questions in the form of email (see Julia's email below) or Github issues.
 
 Developer Team:
-Julia Wilkins (juliawilkins2018@u.northwestern.edu), Ben Scharf, Victoria Cabales, David Jung, Ilham Jardin, Daanish Khazi.
+Julia Wilkins (juliawilkins2018@u.northwestern.edu), Ben Scharf (bscharf@u.northwestern.edu), Victoria Cabales, David Jung, Ilham Jardin, Daanish Khazi.
 
 ![Alt Text](https://media.giphy.com/media/1ynEvsZBPIljlqxhEa/giphy.gif)
 
